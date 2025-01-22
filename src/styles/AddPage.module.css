@@ -1,23 +1,22 @@
 /* page */
 .page {
-    width: 100%;
+    width: 95%;
     background-color: red;
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 0.5em;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
     padding: 1em;
-    height: 45vh;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    box-shadow: 0 0 10px 100em #5f5f5f89;
 
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.41);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -50,4 +49,8 @@
 }
 .addBtn:active {
     transform: scale(0.95);
+}
+
+.message {
+    margin-bottom: 1.5em;
 }

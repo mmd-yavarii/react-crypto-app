@@ -3,6 +3,7 @@ import styles from '../styles/AddPage.module.css';
 function AddPage({ inpHandler, btnHandler }) {
     return (
         <div className={styles.page} id="page">
+            <p className={styles.message}>add new contact</p>
             <div>
                 <input
                     type="text"
