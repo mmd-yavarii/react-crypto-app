@@ -6,8 +6,10 @@ import EmptyMessage from './Components/EmptyMassage';
 import Alert from './Components/Alert';
 
 function App() {
+    const [contacts, setContacts] = useState(
+        JSON.parse(localStorage.getItem('contacts')) || [],
+    );
     const [showPage, setShowPage] = useState(false);
-    const [contacts, setContacts] = useState([]);
     const [newContact, setNewContact] = useState({});
 
     const [alert, setAlert] = useState({
@@ -45,6 +47,45 @@ function App() {
         setNewContact((pre) => ({ ...pre, [key]: value }));
     }
 
+    // clear data
+    function clearData() {
+        if (contacts.length) {
+            setContacts([]);
+            setAlert({
+                show: true,
+                message: 'clear succesfuly.',
+                type: true,
+            });
+        } else {
+            setAlert({
+                show: true,
+                message: 'There is no contacts.',
+                type: false,
+            });
+        }
+        setTimeout(() => setAlert({}), 1000);
+    }
+
+    // sync with localStorage
+    useEffect(() => {
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+    }, [contacts]);
+
+    // delete one contact
+    function deleteContactHandler(id) {
+        const updatedContacts = [...contacts];
+        const index = updatedContacts.findIndex((i) => i.id == id);
+        updatedContacts.splice(index, 1);
+
+        setContacts(updatedContacts);
+        setAlert({
+            show: true,
+            message: 'contact deleted succesfuly.',
+            type: true,
+        });
+        setTimeout(() => setAlert({}), 1000);
+    }
+
     // add new contact
     function addContact() {
         if (Object.keys(newContact).length > 2) {
@@ -57,31 +98,42 @@ function App() {
                 message: 'Contact added succesfuly',
                 type: true,
             });
-            setTimeout(() => setAlert({}), 1000);
         } else {
             setAlert({
                 show: true,
                 message: 'Please fill in all fields before adding a contact.',
                 type: false,
             });
-            setTimeout(() => setAlert({}), 1000);
         }
+        setTimeout(() => setAlert({}), 1000);
     }
 
     return (
-        <div>
+        <>
             {alert.show && <Alert message={alert.message} type={alert.type} />}
-            <h1 style={{ margin: '1em 0.3em' }}>Contacts</h1>
+
+            <div className={styles.header}>
+                <h1>Contacts</h1>
+                <button onClick={clearData} className={styles.clearBtn}>
+                    clear
+                </button>
+            </div>
+
             {/* contacts containerr */}
             <div className={styles.contactsContainer}>
                 {contacts.length ? (
                     contacts.map((item) => (
-                        <Contact info={item} key={item.id} />
+                        <Contact
+                            info={item}
+                            key={item.id}
+                            deleteHandler={() => deleteContactHandler(item.id)}
+                        />
                     ))
                 ) : (
                     <EmptyMessage />
                 )}
             </div>
+
             {/* add contact page */}
             {showPage && (
                 <AddPage
@@ -90,11 +142,12 @@ function App() {
                     btnHandler={addContact}
                 />
             )}
+
             {/* open add contact page */}
             <button className={styles.addBtn} onClick={showAddPage}>
                 +
             </button>
-        </div>
+        </>
     );
 }
 

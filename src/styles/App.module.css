@@ -14,3 +14,16 @@
 .contactsContainer {
     padding: 0 0.5em;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+.clearBtn {
+    background-color: #ff000014;
+    color: red;
+    padding: 0.5em;
+    border-radius: 10px;
+}

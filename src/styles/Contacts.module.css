@@ -4,6 +4,7 @@
     align-items: center;
     gap: 1em;
     border-bottom: 1px solid #ebebeb;
+    position: relative;
 }
 
 .userImg {
@@ -27,4 +28,11 @@
 .txt {
     opacity: 0.5;
     font-size: smaller;
+}
+
+.deleteBtn {
+    position: absolute;
+    right: 1em;
+    padding: 0.5em;
+    background-color: #fff;
 }
