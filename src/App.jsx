@@ -2,11 +2,19 @@ import { useState, useEffect } from 'react';
 import styles from './styles/app.module.css';
 import AddPage from './Components/AddPage';
 import Contact from './Components/Contact';
+import EmptyMessage from './Components/EmptyMassage';
+import Alert from './Components/Alert';
 
 function App() {
     const [showPage, setShowPage] = useState(false);
     const [contacts, setContacts] = useState([]);
     const [newContact, setNewContact] = useState({});
+
+    const [alert, setAlert] = useState({
+        show: false,
+        message: '',
+        type: false,
+    });
 
     // Hide add page when clicking outside
     useEffect(() => {
@@ -39,23 +47,31 @@ function App() {
 
     // add new contact
     function addContact() {
-        const isNotEmpty = Object.values(newContact).every(
-            (item) => item.length,
-        );
-        if (isNotEmpty) {
+        if (Object.keys(newContact).length > 2) {
             const id = Date.now() + Math.floor(Math.random() * 1000);
             const contactWithId = { ...newContact, id };
             setContacts((prevContacts) => [...prevContacts, contactWithId]);
             setNewContact({});
+            setAlert({
+                show: true,
+                message: 'Contact added succesfuly',
+                type: true,
+            });
+            setTimeout(() => setAlert({}), 1000);
         } else {
-            alert('Please fill in all fields before adding a contact.');
+            setAlert({
+                show: true,
+                message: 'Please fill in all fields before adding a contact.',
+                type: false,
+            });
+            setTimeout(() => setAlert({}), 1000);
         }
     }
 
     return (
         <div>
+            {alert.show && <Alert message={alert.message} type={alert.type} />}
             <h1 style={{ margin: '1em 0.3em' }}>Contacts</h1>
-
             {/* contacts containerr */}
             <div className={styles.contactsContainer}>
                 {contacts.length ? (
@@ -63,10 +79,9 @@ function App() {
                         <Contact info={item} key={item.id} />
                     ))
                 ) : (
-                    <p>Empty</p>
+                    <EmptyMessage />
                 )}
             </div>
-
             {/* add contact page */}
             {showPage && (
                 <AddPage
@@ -75,7 +90,6 @@ function App() {
                     btnHandler={addContact}
                 />
             )}
-
             {/* open add contact page */}
             <button className={styles.addBtn} onClick={showAddPage}>
                 +
