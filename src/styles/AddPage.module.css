@@ -1,0 +1,53 @@
+/* page */
+.page {
+    width: 100%;
+    background-color: red;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 1em;
+    height: 45vh;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.41);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* inputs and buttons  */
+.inputs {
+    width: 100%;
+    border: 1px solid #dfdfdf;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+.inputs::placeholder {
+    opacity: 0.5;
+}
+.inputs:focus {
+    border-color: dodgerblue;
+}
+.inputs:focus::placeholder {
+    color: dodgerblue;
+}
+
+.addBtn {
+    width: 100%;
+    background-color: dodgerblue;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 1.4em;
+    transition: transform, 0.3s;
+}
+.addBtn:active {
+    transform: scale(0.95);
+}

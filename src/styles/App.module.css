@@ -1,0 +1,12 @@
+.addBtn {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background-color: dodgerblue;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-style: 2rem;
+}
