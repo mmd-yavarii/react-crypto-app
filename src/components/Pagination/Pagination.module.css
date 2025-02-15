@@ -1,10 +1,13 @@
 .container {
+    width: fit-content;
+    margin: 1em auto;
     display: flex;
     gap: 1em;
     padding: 0.2em 0.3em;
     align-items: center;
     border-radius: 50px;
     background-color: var(--them-secondary-color);
+    border: 1px solid var(--border-color);
 }
 
 .container button {
