@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    gap: 1em;
+    padding: 0.2em 0.3em;
+    align-items: center;
+    border-radius: 50px;
+    background-color: var(--them-secondary-color);
+}
+
+.container button {
+    background-color: transparent;
+    background-color: #fff;
+    color: var(--them-primary-color);
+    padding: 0.4em 1em;
+    border-radius: 50px;
+}
+.container button:last-child {
+    background-color: var(--them-primary-color);
+    color: #fff;
+}
+
+.container p {
+    font-size: 1rem;
+}

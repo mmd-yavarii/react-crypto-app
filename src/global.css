@@ -2,6 +2,14 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
+
+    --background-color: #141414;
+    --text-primary-color: #f6f8fc;
+    --text-secondary-color: #84858b;
+    --them-primary-color: dodgerblue;
+    --them-secondary-color: #24242b;
+    --green-color: #2b913f;
+    --red-color: #f32419;
 }
 
 * {
@@ -10,13 +18,14 @@
     box-sizing: border-box;
     border: none;
     outline: none;
+    color: var(--text-primary-color);
 }
 
 body {
     margin: 0;
-    display: flex;
     max-width: 1000px;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    background-color: var(--background-color);
 }
