@@ -5,9 +5,12 @@ import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
 import CoinList from './components/CoinList/CoinList.jsx';
 import Searchbar from './components/Searchbar/Searchbar.jsx';
+import Layout from './layout/Layout.jsx';
 
 function App() {
+    const [isLogin, setIsLogin] = useState(true);
     const [coins, setCoins] = useState([]);
+
     const [showLoading, setShowLoading] = useState(false);
     const [page, setPage] = useState(1);
 
@@ -36,12 +39,14 @@ function App() {
 
     return (
         <>
-            {showLoading && <Loading />}
+            <Layout title="Explore" isLogin={isLogin}>
+                {showLoading && <Loading />}
 
-            <Searchbar showCoinInfo={showCoinInfo} />
-            <CoinList coins={coins} showCoinInfo={showCoinInfo} />
+                <Searchbar showCoinInfo={showCoinInfo} />
+                <CoinList coins={coins} showCoinInfo={showCoinInfo} />
 
-            <Pagination setPage={setPage} page={page} />
+                <Pagination setPage={setPage} page={page} />
+            </Layout>
         </>
     );
 }
