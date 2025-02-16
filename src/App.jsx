@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { BASE_URL, API_KEY, PER_PAGE } from './constant/helper.js';
 import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
 import CoinList from './components/CoinList/CoinList.jsx';
-
-// api config
-const API_KEY = 'CG-Cumz7nKQNwKdLJquCWVCq6BY';
-let PER_PAGE = 10;
+import Searchbar from './components/Searchbar/Searchbar.jsx';
 
 function App() {
     const [coins, setCoins] = useState([]);
@@ -15,7 +13,7 @@ function App() {
 
     // get data from api
     useEffect(() => {
-        const URL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${PER_PAGE}&page=${page}&x_cg_demo_api_key=${API_KEY}`;
+        const URL = `${BASE_URL}/coins/markets?vs_currency=usd&per_page=${PER_PAGE}&page=${page}&x_cg_demo_api_key=${API_KEY}`;
         setShowLoading(true);
 
         (async () => {
@@ -31,11 +29,17 @@ function App() {
         })();
     }, [page]);
 
+    // show a coin info page
+    function showCoinInfo(id) {
+        console.log(`${BASE_URL}/coins/${id}?x_cg_demo_api_key=${API_KEY}`);
+    }
+
     return (
         <>
             {showLoading && <Loading />}
 
-            <CoinList coins={coins} />
+            <Searchbar showCoinInfo={showCoinInfo} />
+            <CoinList coins={coins} showCoinInfo={showCoinInfo} />
 
             <Pagination setPage={setPage} page={page} />
         </>

@@ -42,3 +42,9 @@
 .decrease {
     color: var(--red-color);
 }
+
+@media (min-width: 500px) {
+    .container {
+        cursor: pointer;
+    }
+}

@@ -3,14 +3,21 @@
     line-height: 1.5;
     font-weight: 400;
 
+    --green-color: #2b913f;
+    --red-color: #f32419;
     --background-color: #141414;
     --border-color: #313131;
     --text-primary-color: #f6f8fc;
     --text-secondary-color: #84858b;
     --them-primary-color: dodgerblue;
     --them-secondary-color: #1c1c21;
-    --green-color: #2b913f;
-    --red-color: #f32419;
+
+    /* --background-color: #fafafa;
+    --border-color: #dddddd;
+    --text-primary-color: #2d2d2d;
+    --text-secondary-color: #a4a4a4;
+    --them-primary-color: dodgerblue;
+    --them-secondary-color: #f1f1f1; */
 }
 
 * {
@@ -23,7 +30,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     max-width: 1000px;
     background-color: var(--background-color);
     padding: 1em;

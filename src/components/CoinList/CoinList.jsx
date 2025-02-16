@@ -1,10 +1,14 @@
 import styles from './CoinList.module.css';
 
-function CoinList({ coins }) {
+function CoinList({ coins, showCoinInfo }) {
     return (
         <div>
             {coins.map((item) => (
-                <div key={item.id} className={styles.container}>
+                <div
+                    key={item.id}
+                    className={styles.container}
+                    onClick={() => showCoinInfo(item.id)}
+                >
                     <div className={styles.info}>
                         <img src={item.image} alt={item.symbol} />
                         <div>
