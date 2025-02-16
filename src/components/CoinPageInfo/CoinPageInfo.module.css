@@ -1,0 +1,41 @@
+/* .container {} */
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1em;
+}
+
+.info img {
+    width: 3em;
+    border-radius: 50%;
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em 0;
+}
+.buttonsContainer button {
+    background-color: var(--them-secondary-color);
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.priceInfo {
+    display: flex;
+    align-items: start;
+    margin: 1em 0.3em;
+    gap: 0.5em;
+    flex-direction: column;
+}
+.priceInfo p {
+    font-size: 0.8rem;
+}
+
+.seleced {
+    color: var(--them-primary-color);
+}

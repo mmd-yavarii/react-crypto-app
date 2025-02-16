@@ -12,7 +12,6 @@ import Modal from './components/Modal/Modal.jsx';
 import CoinPageInfo from './components/CoinPageInfo/CoinPageInfo.jsx';
 
 function App() {
-    const [isLogin, setIsLogin] = useState(true);
     const [coins, setCoins] = useState([]);
 
     const [showLoading, setShowLoading] = useState(false);
@@ -22,7 +21,7 @@ function App() {
         content: 'hello',
     });
 
-    // get data from api
+    // get coins to show in main page
     useEffect(() => {
         const URL = getCoinList.concat(`&page=${page}`);
         setShowLoading(true);
@@ -58,7 +57,7 @@ function App() {
 
     return (
         <>
-            <Layout title="Explore" isLogin={isLogin}>
+            <Layout>
                 {showLoading && <Loading />}
 
                 <Searchbar showCoinInfo={showCoinInfo} />
@@ -79,5 +78,3 @@ function App() {
 }
 
 export default App;
-
-('api-');
