@@ -1,11 +1,15 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { BASE_URL, API_KEY, PER_PAGE } from './constant/helper.js';
+import { getCoinList, getCoin, currency } from './constant/apis.js';
+
 import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
 import CoinList from './components/CoinList/CoinList.jsx';
 import Searchbar from './components/Searchbar/Searchbar.jsx';
 import Layout from './layout/Layout.jsx';
+import Modal from './components/Modal/Modal.jsx';
+import CoinPageInfo from './components/CoinPageInfo/CoinPageInfo.jsx';
 
 function App() {
     const [isLogin, setIsLogin] = useState(true);
@@ -13,17 +17,20 @@ function App() {
 
     const [showLoading, setShowLoading] = useState(false);
     const [page, setPage] = useState(1);
+    const [modal, setModal] = useState({
+        show: false,
+        content: 'hello',
+    });
 
     // get data from api
     useEffect(() => {
-        const URL = `${BASE_URL}/coins/markets?vs_currency=usd&per_page=${PER_PAGE}&page=${page}&x_cg_demo_api_key=${API_KEY}`;
+        const URL = getCoinList.concat(`&page=${page}`);
         setShowLoading(true);
 
         (async () => {
             try {
-                const res = await fetch(URL);
-                const json = await res.json();
-                setCoins(json);
+                const response = await axios.get(URL);
+                setCoins(response.data);
             } catch (error) {
                 alert(error);
             } finally {
@@ -33,8 +40,20 @@ function App() {
     }, [page]);
 
     // show a coin info page
-    function showCoinInfo(id) {
-        console.log(`${BASE_URL}/coins/${id}?x_cg_demo_api_key=${API_KEY}`);
+    async function showCoinInfo(id) {
+        setModal({ show: true, content: <Loading /> });
+
+        const response = await axios.get(getCoin(id));
+        const data = response.data;
+
+        setModal({ show: true, content: <CoinPageInfo info={data} /> });
+    }
+
+    // modal closer
+    function modalCloser(e) {
+        if (e.target.classList.contains('close')) {
+            setModal({ show: false, content: '' });
+        }
     }
 
     return (
@@ -43,7 +62,15 @@ function App() {
                 {showLoading && <Loading />}
 
                 <Searchbar showCoinInfo={showCoinInfo} />
+
                 <CoinList coins={coins} showCoinInfo={showCoinInfo} />
+
+                {modal.show && (
+                    <Modal
+                        content={modal.content}
+                        closeModalHandler={modalCloser}
+                    />
+                )}
 
                 <Pagination setPage={setPage} page={page} />
             </Layout>

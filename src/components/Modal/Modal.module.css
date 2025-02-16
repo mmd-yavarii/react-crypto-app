@@ -1,0 +1,74 @@
+.backgroumd {
+    background-color: red;
+    padding: 1em;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center; /* برای مرکز عمودی */
+    justify-content: center; /* برای مرکز افقی */
+    flex-direction: column;
+
+    /* از https://css.glass */
+    background: #ffffff00;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.conainer {
+    width: 100%;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5em;
+    border-radius: 16px;
+    animation: show 0.5s forwards;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.backgroumd {
+    background-color: red;
+    padding: 1em;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+
+    /* از https://css.glass */
+    background: #ffffff00;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.conainer {
+    width: 100%;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5em;
+    border-radius: 16px;
+    animation: show 0.3s forwards;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

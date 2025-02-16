@@ -4,7 +4,7 @@ import { CiSearch } from 'react-icons/ci';
 
 import styles from './Searchbar.module.css';
 import Loading from '../Loading/Loading';
-import { BASE_URL, API_KEY } from '../../constant/helper.js';
+import { search } from '../../constant/apis.js';
 
 function Searchbar({ showCoinInfo }) {
     const [response, setResponse] = useState([]);
@@ -19,10 +19,9 @@ function Searchbar({ showCoinInfo }) {
 
         (async () => {
             try {
-                const res = await fetch(
-                    `${BASE_URL}/search?x_cg_demo_api_key=${API_KEY}&query=${inp}`,
-                    { signal: blocker.signal },
-                );
+                const res = await fetch(search(inp), {
+                    signal: blocker.signal,
+                });
                 const json = await res.json();
 
                 if (json.coins.length) {
