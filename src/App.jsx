@@ -14,7 +14,6 @@ import CoinPageInfo from './components/CoinPageInfo/CoinPageInfo.jsx';
 import Loading2 from './components/Loading/Loading2.jsx';
 
 function App() {
-    autoDarkmoodHandler();
     const [coins, setCoins] = useState([]);
 
     const [showLoading, setShowLoading] = useState(false);
@@ -57,6 +56,9 @@ function App() {
             setModal({ show: false, content: '' });
         }
     }
+
+    // set dark / light mood by system them
+    autoDarkmoodHandler();
 
     return (
         <>
