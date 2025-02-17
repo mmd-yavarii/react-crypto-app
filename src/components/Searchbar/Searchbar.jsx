@@ -4,7 +4,7 @@ import { CiSearch } from 'react-icons/ci';
 
 import styles from './Searchbar.module.css';
 import Loading from '../Loading/Loading';
-import { search } from '../../constant/apis.js';
+import { search } from '../../services/apis.js';
 
 function Searchbar({ showCoinInfo }) {
     const [response, setResponse] = useState([]);

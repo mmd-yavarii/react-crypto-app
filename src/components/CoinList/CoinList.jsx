@@ -2,7 +2,7 @@ import styles from './CoinList.module.css';
 
 function CoinList({ coins, showCoinInfo }) {
     return (
-        <div>
+        <div className={styles.itemContainer}>
             {coins.map((item) => (
                 <div
                     key={item.id}
@@ -13,12 +13,12 @@ function CoinList({ coins, showCoinInfo }) {
                         <img src={item.image} alt={item.symbol} />
                         <div>
                             <p>{item.name}</p>
-                            <p>{item.symbol}</p>
+                            <p>{item.symbol.toUpperCase()}</p>
                         </div>
                     </div>
 
                     <div className={styles.price}>
-                        <p>{item.current_price.toFixed(2)} $</p>
+                        <p>{item.current_price.toLocaleString()} $</p>
                         <p
                             className={
                                 item.price_change_percentage_24h < 0

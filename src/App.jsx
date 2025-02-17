@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { getCoinList, getCoin, currency } from './constant/apis.js';
-import { autoDarkmoodHandler } from './constant/helper.js';
+import { getCoinList, getCoin, currency } from './services/apis.js';
 
 import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
@@ -42,7 +41,18 @@ function App() {
 
     // show a coin info page
     async function showCoinInfo(id) {
-        setModal({ show: true, content: <Loading2 height="457px" /> });
+        // set loading
+        setModal({
+            show: true,
+            content: (
+                <>
+                    <Loading2 height="45px" />
+                    <Loading2 height="40px" />
+                    <Loading2 height="220px" />
+                    <Loading2 height="31px" />
+                </>
+            ),
+        });
 
         const response = await axios.get(getCoin(id));
         const data = response.data;
@@ -56,9 +66,6 @@ function App() {
             setModal({ show: false, content: '' });
         }
     }
-
-    // set dark / light mood by system them
-    autoDarkmoodHandler();
 
     return (
         <>

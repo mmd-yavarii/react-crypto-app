@@ -16,6 +16,7 @@
     color: var(--them-primary-color);
     padding: 0.4em 1em;
     border-radius: 50px;
+    transition: all 0.3s;
 }
 .container button:last-child {
     background-color: var(--them-primary-color);
@@ -24,4 +25,12 @@
 
 .container p {
     font-size: 1rem;
+}
+
+@media (min-width: 700px) {
+    .container button:hover {
+        opacity: 0.8;
+        transform: scale(0.95);
+        cursor: pointer;
+    }
 }

@@ -57,6 +57,7 @@
     align-items: center;
     padding: 1em;
     gap: 1em;
+    transition: all 0.3s;
 }
 .responseItm img {
     border-radius: 50%;
@@ -67,5 +68,9 @@
 @media (min-width: 500px) {
     .responseItm {
         cursor: pointer;
+    }
+    .responseItm:hover {
+        transform: scale(0.996);
+        opacity: 0.7;
     }
 }

@@ -1,3 +1,5 @@
+import styles from './CoinPageInfo.module.css';
+
 import {
     CartesianGrid,
     Legend,
@@ -8,6 +10,21 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
+
+function CustomTooltip({ active, payload }) {
+    if (active && payload && payload.length) {
+        return (
+            <div className={styles.chartInfo}>
+                <p>
+                    date :{' '}
+                    {new Date(payload[0].payload.date).toLocaleDateString()}
+                </p>
+                <p>price : {payload[0].value.toLocaleString()}</p>
+            </div>
+        );
+    }
+    return null;
+}
 
 function Chart({ chartData, chartType, color }) {
     return (
@@ -25,14 +42,8 @@ function Chart({ chartData, chartType, color }) {
                     <XAxis dataKey="date" hide />
                     <Legend />
 
-                    {/* Tooltip with custom styles */}
-                    <Tooltip
-                        contentStyle={{
-                            backgroundColor: 'black',
-                            border: 'none',
-                        }}
-                        labelStyle={{ color: 'white' }}
-                    />
+                    {/* استفاده از کاستوم تولتیپ */}
+                    <Tooltip content={<CustomTooltip />} />
 
                     <Line
                         type="monotone"

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getMarkeChart } from '../../constant/apis.js';
+import { getMarkeChart } from '../../services/apis.js';
 import Chart from './Chart.jsx';
 
 import styles from './CoinPageInfo.module.css';
@@ -41,14 +41,17 @@ function CoinPageInfo({ info }) {
             <div className={styles.info}>
                 <img src={info.image.large} alt={info.name} />
                 <h4>
-                    {info.name} / {info.symbol}
+                    {info.name} / {info.symbol.toUpperCase()}
                 </h4>
             </div>
             {/* show price and change price percent */}
             <div className={styles.priceInfo}>
-                <p>price : {info.market_data.current_price.bmd} $</p>
                 <p>
-                    price change :{' '}
+                    Price :{' '}
+                    {info.market_data.current_price.bmd.toLocaleString()} $
+                </p>
+                <p>
+                    Price Change :{' '}
                     {info.market_data.price_change_percentage_24h}
                 </p>
             </div>

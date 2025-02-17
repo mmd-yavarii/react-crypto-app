@@ -23,6 +23,7 @@
     padding: 0.5em;
     border-radius: 5px;
     border: 1px solid var(--border-color);
+    transition: all 0.3s;
 }
 
 .priceInfo {
@@ -38,4 +39,21 @@
 
 .seleced {
     color: var(--them-primary-color);
+}
+
+.chartInfo {
+    background-color: var(--background-color);
+    color: var(--text-primary-color);
+    border: 1px solid var(--border-color);
+    padding: 0.8em;
+    border-radius: 10px;
+}
+
+@media (min-width: 700px) {
+    .buttonsContainer button:hover {
+        cursor: pointer;
+        background-color: var(--them-primary-color);
+        color: #fff;
+        transform: scale(0.95);
+    }
 }

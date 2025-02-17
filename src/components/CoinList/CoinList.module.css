@@ -1,13 +1,18 @@
+.itemContainer {
+    margin-bottom: 2em;
+}
+
 .container {
     background-color: var(--them-secondary-color);
     border: 1px solid var(--border-color);
     width: 100%;
     padding: 0.5em;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 0.5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.3s;
 }
 
 .info {
@@ -24,6 +29,7 @@
 .info div p:last-child {
     font-size: 0.7rem;
     color: var(--text-secondary-color);
+    margin-bottom: 5px;
 }
 
 .price {
@@ -43,8 +49,40 @@
     color: var(--red-color);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
+    .itemContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        margin: 2em 0;
+        margin-bottom: 4em;
+    }
+
     .container {
         cursor: pointer;
+        margin: 0;
+        height: 120px;
+        flex-direction: column;
+    }
+    .info {
+        align-self: self-start;
+        align-items: start;
+    }
+    .info img {
+        width: 2em;
+    }
+    .price {
+        flex-direction: row-reverse;
+        align-self: self-end;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .price p {
+        font-size: 1rem;
+    }
+
+    .container:hover {
+        transform: scale(0.97);
+        opacity: 0.8;
     }
 }
