@@ -35,21 +35,26 @@ function Chart({ chartData, chartType, color }) {
                 margin: '1em auto',
             }}
         >
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer
+                width="100%"
+                height="100%"
+                style={{
+                    margin: '1em 0',
+                }}
+            >
                 <LineChart data={chartData}>
                     <CartesianGrid stroke="transparent" />
                     <YAxis dataKey={chartType} domain={['auto', 'auto']} hide />
                     <XAxis dataKey="date" hide />
                     <Legend />
 
-                    {/* استفاده از کاستوم تولتیپ */}
                     <Tooltip content={<CustomTooltip />} />
 
                     <Line
                         type="monotone"
                         dataKey={chartType}
                         stroke={color}
-                        strokeWidth="1px"
+                        strokeWidth="2px"
                         dot={false}
                     />
                 </LineChart>

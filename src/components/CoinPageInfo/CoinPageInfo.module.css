@@ -8,7 +8,9 @@
 
 .info img {
     width: 3em;
+    height: 3em;
     border-radius: 50%;
+    background-color: #fff;
 }
 
 .buttonsContainer {
