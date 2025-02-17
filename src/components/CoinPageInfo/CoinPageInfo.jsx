@@ -4,6 +4,7 @@ import Chart from './Chart.jsx';
 
 import styles from './CoinPageInfo.module.css';
 import { useEffect, useState } from 'react';
+import Loading2 from '../Loading/Loading2.jsx';
 
 function CoinPageInfo({ info }) {
     const [chartType, setChartType] = useState('prices');
@@ -43,7 +44,6 @@ function CoinPageInfo({ info }) {
                     {info.name} / {info.symbol}
                 </h4>
             </div>
-
             {/* show price and change price percent */}
             <div className={styles.priceInfo}>
                 <p>price : {info.market_data.current_price.bmd} $</p>
@@ -52,7 +52,6 @@ function CoinPageInfo({ info }) {
                     {info.market_data.price_change_percentage_24h}
                 </p>
             </div>
-
             {/* show chart */}
             {chartData.length > 0 ? (
                 <Chart
@@ -65,11 +64,8 @@ function CoinPageInfo({ info }) {
                     }
                 />
             ) : (
-                <p style={{ textAlign: 'center', margin: '1em 0' }}>
-                    Loading...
-                </p>
+                <Loading2 />
             )}
-
             <div className={styles.buttonsContainer}>
                 <button
                     className={`${chartType == 'prices' && styles.seleced} btn`}

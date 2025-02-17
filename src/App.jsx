@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import { getCoinList, getCoin, currency } from './constant/apis.js';
+import { autoDarkmoodHandler } from './constant/helper.js';
 
 import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
@@ -10,8 +11,10 @@ import Searchbar from './components/Searchbar/Searchbar.jsx';
 import Layout from './layout/Layout.jsx';
 import Modal from './components/Modal/Modal.jsx';
 import CoinPageInfo from './components/CoinPageInfo/CoinPageInfo.jsx';
+import Loading2 from './components/Loading/Loading2.jsx';
 
 function App() {
+    autoDarkmoodHandler();
     const [coins, setCoins] = useState([]);
 
     const [showLoading, setShowLoading] = useState(false);
@@ -40,7 +43,7 @@ function App() {
 
     // show a coin info page
     async function showCoinInfo(id) {
-        setModal({ show: true, content: <Loading /> });
+        setModal({ show: true, content: <Loading2 height="457px" /> });
 
         const response = await axios.get(getCoin(id));
         const data = response.data;

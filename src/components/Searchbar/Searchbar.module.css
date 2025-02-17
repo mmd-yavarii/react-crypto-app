@@ -1,11 +1,17 @@
 .backPage {
-    background-color: #0000002b;
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.2px);
+    -webkit-backdrop-filter: blur(1.2px);
 }
 
 .container {
@@ -39,7 +45,7 @@
     /* From https://css.glass */
     background: #ffffff00;
     border-radius: 16px;
-    box-shadow: 0 4px 30px #00000063;
+    box-shadow: 4px 7px 10px #00000016;
     backdrop-filter: blur(18.6px);
     -webkit-backdrop-filter: blur(18.6px);
     border: 1px solid var(--border-color);
