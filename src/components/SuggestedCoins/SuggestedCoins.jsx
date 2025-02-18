@@ -34,8 +34,9 @@ function Coin({ info, showCoinInfo, currency }) {
 
             <div className={styles.priceInfo}>
                 <p>
-                    {info.current_price.toFixed(2)} {currency.symbol}
+                    {info.current_price.toLocaleString()} {currency.symbol}
                 </p>
+
                 <p
                     className={
                         info.price_change_percentage_24h > 0

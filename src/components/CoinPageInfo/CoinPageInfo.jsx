@@ -49,7 +49,7 @@ function CoinPageInfo({ info, currency }) {
             {/* show price and change price percent */}
             <div className={styles.priceInfo}>
                 <p>
-                    Price :{' '}
+                    {/* Price :{' '} */}
                     {info.market_data.current_price.bmd.toLocaleString()}{' '}
                     {currency.symbol}
                 </p>
@@ -62,7 +62,7 @@ function CoinPageInfo({ info, currency }) {
                                 : 'priceChangeRed'
                         }
                     >
-                        {info.market_data.price_change_percentage_24h}
+                        {info.market_data.price_change_percentage_24h} %
                     </span>
                 </p>
             </div>

@@ -16,11 +16,11 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #fafafa;
-        --text-primary-color: #2d2d2d;
-        --text-secondary-color: #a4a4a4;
-        --border-color: #e9e9e9;
-        --them-secondary-color: #f3f3f763;
+        --background-color: #ffffff;
+        --text-primary-color: #333333;
+        --text-secondary-color: #666666;
+        --border-color: #e7e7e7;
+        --them-secondary-color: #fbfbfb;
     }
 }
 
@@ -48,7 +48,7 @@ body {
 .title {
     margin-left: 0.8em;
     margin-bottom: 1em;
-    font-weight: 300;
+    font-weight: 700;
     font-size: 0.8rem;
     opacity: 0.8;
 }

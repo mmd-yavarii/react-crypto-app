@@ -38,6 +38,9 @@
 .priceInfo p {
     font-size: 0.8rem;
 }
+.priceInfo p:first-child {
+    font-size: 1.8rem;
+}
 
 .seleced {
     color: var(--them-primary-color);

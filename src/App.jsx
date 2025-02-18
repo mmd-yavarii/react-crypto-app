@@ -39,7 +39,7 @@ function App() {
                 setShowLoading(false);
             }
         })();
-    }, [page]);
+    }, [page, currency.type]);
 
     // show a coin info page
     async function showCoinInfo(id) {
@@ -76,7 +76,10 @@ function App() {
             <Layout>
                 {showLoading && <Loading />}
 
-                <Searchbar showCoinInfo={showCoinInfo} />
+                <Searchbar
+                    showCoinInfo={showCoinInfo}
+                    setCurrency={setCurrency}
+                />
 
                 {page == 1 && (
                     <SuggestedCoins

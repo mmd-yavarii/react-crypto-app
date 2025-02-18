@@ -6,7 +6,7 @@ import styles from './Searchbar.module.css';
 import Loading from '../Loading/Loading';
 import { search } from '../../services/apis.js';
 
-function Searchbar({ showCoinInfo }) {
+function Searchbar({ showCoinInfo, setCurrency }) {
     const [response, setResponse] = useState([]);
     const [showSearchPage, setShowSearchPage] = useState(false);
     const [showLoading, setShowLoading] = useState(false);
@@ -64,14 +64,40 @@ function Searchbar({ showCoinInfo }) {
             )}
 
             <div className={styles.container}>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={inp}
-                    onChange={searchHandler}
-                />
+                <div className={styles.nav}>
+                    <div className={styles.searchInp}>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={inp}
+                            onChange={searchHandler}
+                        />
 
-                <CiSearch />
+                        <CiSearch />
+                    </div>
+
+                    <select
+                        onChange={(event) =>
+                            setCurrency(JSON.parse(event.target.value))
+                        }
+                    >
+                        <option
+                            value={JSON.stringify({ type: 'usd', symbol: '$' })}
+                        >
+                            usd
+                        </option>
+                        <option
+                            value={JSON.stringify({ type: 'eur', symbol: '€' })}
+                        >
+                            eur
+                        </option>
+                        <option
+                            value={JSON.stringify({ type: 'jpy', symbol: '¥' })}
+                        >
+                            jpy
+                        </option>
+                    </select>
+                </div>
 
                 {/* show search page */}
                 {showSearchPage && (
@@ -79,7 +105,7 @@ function Searchbar({ showCoinInfo }) {
                         {/* show loading */}
                         {showLoading && <Loading />}
 
-                        {/* show response */}
+                        {/* show search response page */}
                         {!!response.length &&
                             !showLoading &&
                             response.map((item) => (
