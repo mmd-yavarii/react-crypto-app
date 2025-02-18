@@ -11,6 +11,7 @@ import Layout from './layout/Layout.jsx';
 import Modal from './components/Modal/Modal.jsx';
 import CoinPageInfo from './components/CoinPageInfo/CoinPageInfo.jsx';
 import Loading2 from './components/Loading/Loading2.jsx';
+import SuggestedCoins from './components/SuggestedCoins/SuggestedCoins.jsx';
 
 function App() {
     const [coins, setCoins] = useState([]);
@@ -73,6 +74,13 @@ function App() {
                 {showLoading && <Loading />}
 
                 <Searchbar showCoinInfo={showCoinInfo} />
+
+                {page == 1 && (
+                    <SuggestedCoins
+                        coins={coins.slice(Math.floor(Math.random() * 5), 8)}
+                        showCoinInfo={showCoinInfo}
+                    />
+                )}
 
                 <CoinList coins={coins} showCoinInfo={showCoinInfo} />
 

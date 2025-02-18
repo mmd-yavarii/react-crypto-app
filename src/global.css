@@ -44,3 +44,26 @@ body {
     width: 0;
     background-color: transparent;
 }
+
+.title {
+    margin-left: 0.8em;
+    margin-bottom: 1em;
+    font-weight: 300;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.priceChangeGreen {
+    text-shadow: 0 0 30px var(--green-color), 0 0 0.5px #00000083;
+    color: var(--green-color);
+    width: fit-content;
+    padding: 0.2em 0.3em;
+    border-radius: 7px;
+}
+.priceChangeRed {
+    text-shadow: 0 0 30px var(--red-color), 0 0 0.5px #00000083;
+    color: var(--red-color);
+    width: fit-content;
+    padding: 0.2em 0.3em;
+    border-radius: 7px;
+}

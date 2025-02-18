@@ -52,7 +52,15 @@ function CoinPageInfo({ info }) {
                 </p>
                 <p>
                     Price Change :{' '}
-                    {info.market_data.price_change_percentage_24h}
+                    <span
+                        className={
+                            info.market_data.price_change_percentage_24h > 0
+                                ? 'priceChangeGreen'
+                                : 'priceChangeRed'
+                        }
+                    >
+                        {info.market_data.price_change_percentage_24h}
+                    </span>
                 </p>
             </div>
             {/* show chart */}
