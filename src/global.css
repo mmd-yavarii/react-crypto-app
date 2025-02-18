@@ -46,8 +46,7 @@ body {
 }
 
 .title {
-    margin-left: 0.8em;
-    margin-bottom: 1em;
+    margin: 1em 0.8rem;
     font-weight: 700;
     font-size: 0.8rem;
     opacity: 0.8;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getMarkeChart } from '../../services/apis.js';
-import Chart from './Chart.jsx';
+import Chart from '../Chart/Chart.jsx';
 
 import styles from './CoinPageInfo.module.css';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ function CoinPageInfo({ info, currency }) {
 
     const days = 7;
 
-    // get market chart
+    // get market chart price
     useEffect(() => {
         (async () => {
             const response = await axios.get(
@@ -31,7 +31,6 @@ function CoinPageInfo({ info, currency }) {
         })();
     }, [days, chartType]);
 
-    // set chart type (market_caps, prices, total_volumes)
     function changeChartHandler(e) {
         const value = e.target.innerText.replace(' ', '_');
         setChartType(value);
@@ -76,9 +75,13 @@ function CoinPageInfo({ info, currency }) {
                             ? '#2b913f'
                             : '#f32419'
                     }
+                    width="100%"
+                    height="250px"
                 />
             ) : (
-                <Loading2 />
+                <div style={{ height: '250px' }}>
+                    <Loading2 />
+                </div>
             )}
             <div className={styles.buttonsContainer}>
                 <button

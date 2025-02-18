@@ -2,17 +2,30 @@
     margin-bottom: 2em;
 }
 
+.marketCap {
+    display: none;
+    font-size: 0.9rem;
+    width: 120px;
+    opacity: 0.6;
+}
 .container {
     background-color: var(--them-secondary-color);
     border: 1px solid var(--border-color);
     width: 100%;
     padding: 0.5em;
     border-radius: 10px;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.7em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: all 0.3s;
+    flex-direction: column;
+}
+.coinInformation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .info {
@@ -22,7 +35,7 @@
 }
 
 .info img {
-    width: 2em;
+    width: 2.4em;
     border-radius: 50%;
 }
 
@@ -35,17 +48,38 @@
 .price {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
     gap: 1em;
 }
 .price p {
     font-size: 0.8rem;
 }
+.chart {
+    width: 100%;
+    order: 1;
+    height: 100px;
+    padding: 1em;
+}
 
 @media (min-width: 800px) {
+    .container {
+        flex-direction: row;
+        height: fit-content;
+    }
+
     .container:hover {
         cursor: pointer;
         transform: scale(0.99);
         opacity: 0.8;
+    }
+    .info,
+    .price {
+        width: 200px;
+    }
+    .chart {
+        display: block;
+    }
+    .marketCap {
+        display: block;
     }
 }

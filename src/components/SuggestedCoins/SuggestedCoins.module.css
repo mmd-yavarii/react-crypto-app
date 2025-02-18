@@ -42,3 +42,9 @@
     gap: 0.5em;
     justify-content: end;
 }
+
+@media (min-width: 700px) {
+    .coins {
+        cursor: pointer;
+    }
+}
