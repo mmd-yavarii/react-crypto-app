@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { CiSearch } from 'react-icons/ci';
+import { IoSearch } from 'react-icons/io5';
 
 import styles from './Searchbar.module.css';
 import Loading from '../Loading/Loading';
@@ -73,7 +73,7 @@ function Searchbar({ showCoinInfo, setCurrency }) {
                             onChange={searchHandler}
                         />
 
-                        <CiSearch />
+                        <IoSearch opacity="0.5" />
                     </div>
 
                     <select
