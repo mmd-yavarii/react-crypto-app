@@ -6,7 +6,7 @@ import styles from './CoinPageInfo.module.css';
 import { useEffect, useState } from 'react';
 import Loading2 from '../Loading/Loading2.jsx';
 
-function CoinPageInfo({ info }) {
+function CoinPageInfo({ info, currency }) {
     const [chartType, setChartType] = useState('prices');
     const [chartData, setChartData] = useState([]);
 
@@ -15,7 +15,9 @@ function CoinPageInfo({ info }) {
     // get market chart
     useEffect(() => {
         (async () => {
-            const response = await axios.get(getMarkeChart(info.id, days));
+            const response = await axios.get(
+                getMarkeChart(info.id, days, currency.type),
+            );
 
             // convert data for show in chart
             const converted = response.data[chartType].map((item) => {
@@ -48,7 +50,8 @@ function CoinPageInfo({ info }) {
             <div className={styles.priceInfo}>
                 <p>
                     Price :{' '}
-                    {info.market_data.current_price.bmd.toLocaleString()} $
+                    {info.market_data.current_price.bmd.toLocaleString()}{' '}
+                    {currency.symbol}
                 </p>
                 <p>
                     Price Change :{' '}

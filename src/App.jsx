@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { getCoinList, getCoin, currency } from './services/apis.js';
+import { getCoinList, getCoin } from './services/apis.js';
 
 import Pagination from './components/Pagination/Pagination.jsx';
 import Loading from './components/Loading/Loading.jsx';
@@ -18,6 +18,7 @@ function App() {
 
     const [showLoading, setShowLoading] = useState(false);
     const [page, setPage] = useState(1);
+    const [currency, setCurrency] = useState({ type: 'usd', symbol: '$' });
     const [modal, setModal] = useState({
         show: false,
         content: 'hello',
@@ -25,7 +26,7 @@ function App() {
 
     // get coins to show in main page
     useEffect(() => {
-        const URL = getCoinList.concat(`&page=${page}`);
+        const URL = getCoinList(currency.type, page);
         setShowLoading(true);
 
         (async () => {
@@ -54,11 +55,13 @@ function App() {
                 </>
             ),
         });
-
         const response = await axios.get(getCoin(id));
         const data = response.data;
 
-        setModal({ show: true, content: <CoinPageInfo info={data} /> });
+        setModal({
+            show: true,
+            content: <CoinPageInfo info={data} currency={currency} />,
+        });
     }
 
     // modal closer
@@ -79,10 +82,15 @@ function App() {
                     <SuggestedCoins
                         coins={coins.slice(Math.floor(Math.random() * 5), 8)}
                         showCoinInfo={showCoinInfo}
+                        currency={currency}
                     />
                 )}
 
-                <CoinList coins={coins} showCoinInfo={showCoinInfo} />
+                <CoinList
+                    coins={coins}
+                    showCoinInfo={showCoinInfo}
+                    currency={currency}
+                />
 
                 {modal.show && (
                     <Modal

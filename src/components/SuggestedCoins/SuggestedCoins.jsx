@@ -1,6 +1,6 @@
 import styles from './SuggestedCoins.module.css';
 
-function SuggestedCoins({ coins, showCoinInfo }) {
+function SuggestedCoins({ coins, showCoinInfo, currency }) {
     return (
         <>
             <h4 className="title">Suggested Coins</h4>
@@ -11,6 +11,7 @@ function SuggestedCoins({ coins, showCoinInfo }) {
                         key={item.id}
                         info={item}
                         showCoinInfo={showCoinInfo}
+                        currency={currency}
                     />
                 ))}
             </div>
@@ -20,7 +21,7 @@ function SuggestedCoins({ coins, showCoinInfo }) {
 
 export default SuggestedCoins;
 
-function Coin({ info, showCoinInfo }) {
+function Coin({ info, showCoinInfo, currency }) {
     return (
         <div className={styles.coins} onClick={() => showCoinInfo(info.id)}>
             <div className={styles.symbol}>
@@ -32,7 +33,9 @@ function Coin({ info, showCoinInfo }) {
             </div>
 
             <div className={styles.priceInfo}>
-                <p>{info.current_price.toFixed(2)} $</p>
+                <p>
+                    {info.current_price.toFixed(2)} {currency.symbol}
+                </p>
                 <p
                     className={
                         info.price_change_percentage_24h > 0

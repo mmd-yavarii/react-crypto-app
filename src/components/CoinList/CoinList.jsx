@@ -1,6 +1,6 @@
 import styles from './CoinList.module.css';
 
-function CoinList({ coins, showCoinInfo }) {
+function CoinList({ coins, showCoinInfo, currency }) {
     return (
         <>
             <h4 className="title">All Coins</h4>
@@ -21,7 +21,10 @@ function CoinList({ coins, showCoinInfo }) {
                         </div>
 
                         <div className={styles.price}>
-                            <p>{item.current_price.toLocaleString()} $</p>
+                            <p>
+                                {item.current_price.toLocaleString()}{' '}
+                                {currency.symbol}
+                            </p>
                             <p
                                 className={
                                     item.price_change_percentage_24h > 0
