@@ -1,5 +1,3 @@
-import { CiUser } from 'react-icons/ci';
-
 import styles from './Layout.module.css';
 
 function Layout({ children }) {

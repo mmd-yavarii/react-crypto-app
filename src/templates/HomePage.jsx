@@ -13,7 +13,7 @@ import CoinPageInfo from '../components/CoinPageInfo/CoinPageInfo.jsx';
 import Loading2 from '../components/Loading/Loading2.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
 
-function HomePage({ currency, setCurrency }) {
+function HomePage({ currency, setCurrency, error, setError }) {
     const [coins, setCoins] = useState([]);
 
     const [showLoading, setShowLoading] = useState(false);
@@ -33,7 +33,10 @@ function HomePage({ currency, setCurrency }) {
                 const response = await axios.get(URL);
                 setCoins(response.data);
             } catch (error) {
-                alert(error);
+                setError({
+                    show: true,
+                    message: error.message,
+                });
             } finally {
                 setShowLoading(false);
             }

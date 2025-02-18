@@ -32,6 +32,7 @@ function Chart({ chartData, chartType, color, width, height, showChartInfo }) {
                     {showChartInfo && <Tooltip content={<CustomTooltip />} />}
 
                     <Line
+                        line
                         type="monotone"
                         dataKey={chartType}
                         stroke={color}

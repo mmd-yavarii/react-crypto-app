@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 3em;
+}
+.container h1 {
+    margin-bottom: 20px;
+}
+
+.container p {
+    margin-bottom: 1em;
+}
+
+.container button {
+    background-color: var(--them-primary-color);
+    color: #fff;
+    padding: 1em;
+    border-radius: 10px;
+    margin-top: 1em;
+}

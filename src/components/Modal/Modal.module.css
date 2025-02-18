@@ -16,15 +16,6 @@
     -webkit-backdrop-filter: blur(2px);
 }
 
-@keyframes show {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .conainer {
     width: 100%;
     max-width: 600px;
@@ -32,7 +23,7 @@
     border: 1px solid var(--border-color);
     padding: 0.5em;
     border-radius: 15px;
-    animation: show 0.3s forwards;
+    animation: show 0.2s forwards;
 }
 
 @keyframes show {

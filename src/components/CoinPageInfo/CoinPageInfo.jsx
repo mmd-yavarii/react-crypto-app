@@ -77,6 +77,7 @@ function CoinPageInfo({ info, currency }) {
                     }
                     width="100%"
                     height="250px"
+                    showChartInfo={true}
                 />
             ) : (
                 <div style={{ height: '250px' }}>
