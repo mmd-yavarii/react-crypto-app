@@ -36,7 +36,7 @@ function Chart({ chartData, chartType, color, width, height, showChartInfo }) {
                         type="monotone"
                         dataKey={chartType}
                         stroke={color}
-                        strokeWidth="1px"
+                        strokeWidth="2px"
                         dot={false}
                     />
                 </LineChart>
