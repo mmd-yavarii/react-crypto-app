@@ -7,7 +7,8 @@
     --red-color: #f32419;
     --them-primary-color: #1e90ff;
 
-    --background-color: #1d1c1c;
+    /* --background-color: #1d1c1c; */
+    --background-color: red;
     --border-color: #313131;
     --text-primary-color: #f6f8fc;
     --text-secondary-color: #84858b;
