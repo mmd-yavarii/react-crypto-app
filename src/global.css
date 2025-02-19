@@ -7,20 +7,20 @@
     --red-color: #f32419;
     --them-primary-color: #1e90ff;
 
-    --background-color: #141414;
+    --background-color: #1d1c1c;
     --border-color: #313131;
     --text-primary-color: #f6f8fc;
     --text-secondary-color: #84858b;
-    --them-secondary-color: #1c1c21;
+    --them-secondary-color: #212126;
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #ffffff;
+        --background-color: #fafafa;
         --text-primary-color: #333333;
         --text-secondary-color: #666666;
         --border-color: #e7e7e7;
-        --them-secondary-color: #fbfbfb;
+        --them-secondary-color: #f5f5f5;
     }
 }
 
