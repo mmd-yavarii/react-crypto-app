@@ -97,7 +97,11 @@ function CoinCard({ info, showCoinInfo, currency }) {
             </div>
 
             {/* Chart with updated chartData */}
-            <div className={styles.chart}>
+            <div
+                className={`${styles.chart} ${
+                    priceChange > 0 ? styles.greenChart : styles.redChart
+                }`}
+            >
                 {chartData.length ? (
                     <Chart
                         width="100%"

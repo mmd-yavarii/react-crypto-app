@@ -59,6 +59,13 @@
     order: 1;
     height: 100px;
     padding: 1em;
+    border-radius: 10px;
+}
+.greenChart {
+    background: linear-gradient(to top, #00ff370e, transparent, transparent);
+}
+.redChart {
+    background: linear-gradient(to top, #ff00190e, transparent, transparent);
 }
 
 @media (min-width: 800px) {
