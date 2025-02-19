@@ -4,6 +4,8 @@ import { IoSearch } from 'react-icons/io5';
 
 import styles from './Searchbar.module.css';
 import Loading from '../Loading/Loading';
+import ErrorPage from '../ErrorPage/ErrorPage.jsx';
+
 import { search } from '../../services/apis.js';
 
 function Searchbar({ showCoinInfo, setCurrency }) {
@@ -11,6 +13,11 @@ function Searchbar({ showCoinInfo, setCurrency }) {
     const [showSearchPage, setShowSearchPage] = useState(false);
     const [showLoading, setShowLoading] = useState(false);
     const [inp, setInp] = useState('');
+
+    const [error, setError] = useState({
+        show: false,
+        error: '',
+    });
 
     // get data
     useEffect(() => {
@@ -30,6 +37,9 @@ function Searchbar({ showCoinInfo, setCurrency }) {
                     setShowSearchPage(false);
                 }
             } catch (error) {
+                if (error.name != 'AbortError') {
+                    setError({ show: true, error: error });
+                }
             } finally {
                 setShowLoading(false);
             }
@@ -107,6 +117,7 @@ function Searchbar({ showCoinInfo, setCurrency }) {
 
                         {/* show search response page */}
                         {!!response.length &&
+                            !error.show &&
                             !showLoading &&
                             response.map((item) => (
                                 <div
@@ -118,6 +129,10 @@ function Searchbar({ showCoinInfo, setCurrency }) {
                                     <p>{item.name}</p>
                                 </div>
                             ))}
+
+                        {error.show && !showLoading && (
+                            <ErrorPage error={error.error} />
+                        )}
                     </div>
                 )}
             </div>

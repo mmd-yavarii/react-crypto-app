@@ -1,8 +1,12 @@
 import { useState } from 'react';
 
+import { setMetaThemColor } from './service/helper.js';
+
 import HomePage from './templates/homePage';
 import Layout from './Layout/Layout';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+
+setMetaThemColor();
 
 function App() {
     const [currency, setCurrency] = useState({ type: 'usd', symbol: '$' });
@@ -14,7 +18,9 @@ function App() {
     return (
         <>
             {error.show ? (
-                <ErrorPage message={error.message} />
+                <div style={{ height: '90vh' }}>
+                    <ErrorPage error={error} />
+                </div>
             ) : (
                 <Layout>
                     <HomePage

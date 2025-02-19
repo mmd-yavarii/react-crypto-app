@@ -1,15 +1,17 @@
 import styles from './ErrorPage.module.css';
 
-function ErrorPage({ message }) {
+function ErrorPage({ error }) {
     function reloader() {
-        location.reload();
+        window.location.reload();
     }
 
     return (
         <div className={styles.container}>
-            <h1>Opps</h1>
-            <p>{message}</p>
-            <button onClick={reloader}>Reload</button>
+            <img src="/error.webp" alt="Error occurred" />
+
+            <h1>Opps !</h1>
+            <p>{error?.message || 'An unexpected error occurred.'}</p>
+            <button onClick={reloader}>Reload App</button>
         </div>
     );
 }

@@ -12,6 +12,7 @@ import Modal from '../components/Modal/Modal.jsx';
 import CoinPageInfo from '../components/CoinPageInfo/CoinPageInfo.jsx';
 import Loading2 from '../components/Loading/Loading2.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
+import ErrorPage from '../components/ErrorPage/ErrorPage.jsx';
 
 function HomePage({ currency, setCurrency, error, setError }) {
     const [coins, setCoins] = useState([]);
@@ -43,7 +44,7 @@ function HomePage({ currency, setCurrency, error, setError }) {
         })();
     }, [page, currency.type]);
 
-    // show a coin info page
+    // show coin info in modal
     async function showCoinInfo(id) {
         // set loading
         setModal({
@@ -57,13 +58,20 @@ function HomePage({ currency, setCurrency, error, setError }) {
                 </>
             ),
         });
-        const response = await axios.get(getCoin(id));
-        const data = response.data;
+        try {
+            const response = await axios.get(getCoin(id));
+            const data = response.data;
 
-        setModal({
-            show: true,
-            content: <CoinPageInfo info={data} currency={currency} />,
-        });
+            setModal({
+                show: true,
+                content: <CoinPageInfo info={data} currency={currency} />,
+            });
+        } catch (err) {
+            setModal({
+                show: true,
+                content: <ErrorPage error={err} />,
+            });
+        }
     }
 
     // modal closer

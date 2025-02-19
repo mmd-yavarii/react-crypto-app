@@ -18,7 +18,6 @@ function CoinPageInfo({ info, currency }) {
             const response = await axios.get(
                 getMarkeChart(info.id, days, currency.type),
             );
-
             // convert data for show in chart
             const converted = response.data[chartType].map((item) => {
                 return {
