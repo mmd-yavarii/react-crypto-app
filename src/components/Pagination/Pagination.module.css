@@ -1,36 +1,47 @@
 .container {
-    width: fit-content;
-    margin: 1em auto;
     display: flex;
-    gap: 1em;
-    padding: 0.2em 0.3em;
     align-items: center;
-    border-radius: 50px;
-    background-color: var(--them-secondary-color);
-    border: 1px solid var(--border-color);
+    justify-content: center;
+    gap: 0.5em;
+    margin: 1em 0;
 }
 
-.container button {
-    background-color: transparent;
-    background-color: #fff;
-    color: var(--them-primary-color);
-    padding: 0.4em 1em;
-    border-radius: 50px;
-    transition: all 0.3s;
+.container p,
+.container button,
+.container div {
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    font-weight: normal;
+    font-size: 1rem;
 }
-.container button:last-child {
+
+.container p,
+.container button {
+    background-color: var(--them-secondary-color);
+}
+
+.container button:last-child,
+.container button:first-child {
+    width: 2.8em;
+    border-radius: 50px;
+}
+
+.selected {
     background-color: var(--them-primary-color);
     color: #fff;
 }
 
-.container p {
-    font-size: 1rem;
-}
-
 @media (min-width: 700px) {
-    .container button:hover {
-        opacity: 0.8;
-        transform: scale(0.95);
+    .container button {
         cursor: pointer;
+    }
+    .container p,
+    .container div {
+        cursor: default;
     }
 }

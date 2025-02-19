@@ -108,7 +108,7 @@ function HomePage({ currency, setCurrency, error, setError }) {
                 />
             )}
 
-            <Pagination setPage={setPage} page={page} />
+            <Pagination setPage={setPage} />
         </>
     );
 }
