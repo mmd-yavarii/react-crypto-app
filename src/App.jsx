@@ -18,7 +18,7 @@ function App() {
     return (
         <>
             {error.show ? (
-                <div style={{ height: '90vh' }}>
+                <div style={{ height: '100dvh' }}>
                     <ErrorPage error={error} />
                 </div>
             ) : (
