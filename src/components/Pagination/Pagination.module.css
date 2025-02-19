@@ -3,15 +3,15 @@
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    margin: 1em 0;
+    margin: 2.6em 0;
 }
 
 .container p,
 .container button,
 .container div {
-    width: 1.7em;
-    height: 1.7em;
-    border-radius: 10px;
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,8 +27,7 @@
 
 .container button:last-child,
 .container button:first-child {
-    width: 2.8em;
-    border-radius: 50px;
+    width: 3.6em;
 }
 
 .selected {
