@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { setMetaThemColor } from './service/helper.js';
 
-import HomePage from './templates/homePage';
+import HomePage from './templates/HomePage';
 import Layout from './Layout/Layout';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 
