@@ -53,14 +53,14 @@ body {
 }
 
 .priceChangeGreen {
-    text-shadow: 0 0 30px var(--green-color), 0 0 0.5px #00000083;
+    text-shadow: 0 0 20px var(--green-color), 0 0 0.5px #00000083;
     color: var(--green-color);
     width: fit-content;
     padding: 0.2em 0.3em;
     border-radius: 7px;
 }
 .priceChangeRed {
-    text-shadow: 0 0 30px var(--red-color), 0 0 0.5px #00000083;
+    text-shadow: 0 0 20px var(--red-color), 0 0 0.5px #00000083;
     color: var(--red-color);
     width: fit-content;
     padding: 0.2em 0.3em;

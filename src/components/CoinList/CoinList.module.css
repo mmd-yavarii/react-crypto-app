@@ -33,6 +33,9 @@
     align-items: center;
     gap: 1em;
 }
+.info p {
+    font-weight: 500;
+}
 
 .info img {
     width: 2.4em;
@@ -43,6 +46,7 @@
     font-size: 0.7rem;
     color: var(--text-secondary-color);
     margin-bottom: 5px;
+    font-weight: 700;
 }
 
 .price {
@@ -53,6 +57,7 @@
 }
 .price p {
     font-size: 0.8rem;
+    font-weight: 500;
 }
 .chart {
     width: 100%;
