@@ -33,11 +33,12 @@
 .otherInfo {
     font-size: 0.7rem;
     font-weight: 100;
-    opacity: 0.5;
+    color: var(--text-secondary-color);
     margin-bottom: 4px;
 }
 .otherInfo span {
     margin-right: 15px;
+    color: var(--text-secondary-color);
 }
 
 /* timer range */
@@ -53,7 +54,12 @@
 }
 .timeButton {
     background-color: transparent;
-    opacity: 0.4;
+    color: var(--text-secondary-color);
+    opacity: 0.8;
+}
+.timeBaseContainer button {
+    transition: all 0.3s;
+    font-size: 1rem;
 }
 .timeSelected {
     background-color: transparent;
@@ -90,7 +96,9 @@
         color: #fff;
         transform: scale(0.95);
     }
-    .timeBaseContainer button {
+    .timeBaseContainer button:hover {
+        opacity: 1;
         cursor: pointer;
+        transform: scale(1.1);
     }
 }

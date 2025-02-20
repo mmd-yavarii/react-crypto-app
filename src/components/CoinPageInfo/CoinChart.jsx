@@ -23,7 +23,7 @@ function CoinChart({ info, chartData, chartType, setChartType }) {
                             : '#f32419'
                     }
                     width="100%"
-                    height="160px"
+                    height="200px"
                     showChartInfo={true}
                 />
             ) : (

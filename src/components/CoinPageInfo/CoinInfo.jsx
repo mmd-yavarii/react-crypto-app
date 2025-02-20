@@ -40,14 +40,14 @@ function CoinInfoSection({ info, currency }) {
 
                 <p className={styles.otherInfo}>
                     <span>
-                        <FaArrowTrendUp /> {' / '}
+                        <FaArrowTrendUp opacity="0.5" /> {' / '}
                         {info.market_data.high_24h[
                             currency.type
                         ].toLocaleString()}{' '}
                         {currency.symbol}
                     </span>
                     <span>
-                        <FaArrowTrendDown /> {' / '}
+                        <FaArrowTrendDown opacity="0.5" /> {' / '}
                         {info.market_data.low_24h[
                             currency.type
                         ].toLocaleString()}{' '}
