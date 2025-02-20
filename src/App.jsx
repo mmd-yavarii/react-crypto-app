@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { setMetaThemColor } from './service/helper.js';
+import { setMetaThemColor } from './helpers/helper.js';
 
 import HomePage from './templates/HomePage';
 import Layout from './Layout/Layout';

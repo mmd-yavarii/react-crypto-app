@@ -1,22 +1,48 @@
 import axios from 'axios';
 import { getMarkeChart } from '../../services/apis.js';
-import Chart from '../Chart/Chart.jsx';
 
 import styles from './CoinPageInfo.module.css';
-import { useEffect, useState } from 'react';
-import Loading2 from '../Loading/Loading2.jsx';
+
+import { useEffect, useReducer, useState } from 'react';
+
+import CoinInfoSection from './CoinInfo.jsx';
+import TimeRange from './TimeRange.jsx';
+import CoinChart from './CoinChart.jsx';
+
+// set base time for chart
+function reducer(state, action) {
+    switch (action) {
+        case '24h':
+            return 1;
+
+        case '1w':
+            return 7;
+
+        case '1m':
+            return 30;
+
+        case '3m':
+            return 90;
+
+        case '6m':
+            return 180;
+
+        case '1y':
+            return 365;
+    }
+}
 
 function CoinPageInfo({ info, currency }) {
+    const [timeRange, dispatch] = useReducer(reducer, 1);
+
     const [chartType, setChartType] = useState('prices');
     const [chartData, setChartData] = useState([]);
-
-    const days = 7;
 
     // get market chart price
     useEffect(() => {
         (async () => {
             const response = await axios.get(
-                getMarkeChart(info.id, days, currency.type),
+                getMarkeChart(info.id, timeRange, currency.type),
             );
             // convert data for show in chart
             const converted = response.data[chartType].map((item) => {
@@ -28,85 +54,22 @@ function CoinPageInfo({ info, currency }) {
 
             setChartData(converted);
         })();
-    }, [days, chartType]);
-
-    function changeChartHandler(e) {
-        const value = e.target.innerText.replace(' ', '_');
-        setChartType(value);
-    }
+    }, [timeRange, chartType]);
 
     return (
         <div className={styles.container}>
-            {/* show coin info */}
-            <div className={styles.info}>
-                <img src={info.image.large} alt={info.name} />
-                <h4>
-                    {info.name} / {info.symbol.toUpperCase()}
-                </h4>
-            </div>
-            {/* show price and change price percent */}
-            <div className={styles.priceInfo}>
-                <p>
-                    {/* Price :{' '} */}
-                    {info.market_data.current_price.bmd.toLocaleString()}{' '}
-                    {currency.symbol}
-                </p>
-                <p>
-                    Price Change :{' '}
-                    <span
-                        className={
-                            info.market_data.price_change_percentage_24h > 0
-                                ? 'priceChangeGreen'
-                                : 'priceChangeRed'
-                        }
-                    >
-                        {info.market_data.price_change_percentage_24h} %
-                    </span>
-                </p>
-            </div>
-            {/* show chart */}
-            {chartData.length > 0 ? (
-                <Chart
-                    chartData={chartData}
-                    chartType={chartType}
-                    color={
-                        info.market_data.price_change_percentage_24h > 0
-                            ? '#2b913f'
-                            : '#f32419'
-                    }
-                    width="100%"
-                    height="250px"
-                    showChartInfo={true}
-                />
-            ) : (
-                <div style={{ height: '250px' }}>
-                    <Loading2 />
-                </div>
-            )}
-            <div className={styles.buttonsContainer}>
-                <button
-                    className={`${chartType == 'prices' && styles.seleced} btn`}
-                    onClick={changeChartHandler}
-                >
-                    prices
-                </button>
-                <button
-                    className={`${
-                        chartType == 'market_caps' && styles.seleced
-                    } btn`}
-                    onClick={changeChartHandler}
-                >
-                    market caps
-                </button>
-                <button
-                    className={`${
-                        chartType == 'total_volumes' && styles.seleced
-                    } btn`}
-                    onClick={changeChartHandler}
-                >
-                    total volumes
-                </button>
-            </div>
+            <CoinInfoSection info={info} currency={currency} />
+
+            {/* timer range buttons */}
+            <TimeRange timeRange={timeRange} dispatch={dispatch} />
+
+            {/* get price time base */}
+            <CoinChart
+                info={info}
+                chartData={chartData}
+                chartType={chartType}
+                setChartType={setChartType}
+            />
         </div>
     );
 }
