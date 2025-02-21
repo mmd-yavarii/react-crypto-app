@@ -89,6 +89,20 @@
     color: var(--them-primary-color);
 }
 
+.exchangeBtn {
+    background-color: var(--them-primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    padding: 0.4em;
+    font-weight: bold;
+    border-radius: 7px;
+    transition: all 0.3s;
+}
+
 @media (min-width: 700px) {
     .buttonsContainer button:hover {
         cursor: pointer;
@@ -100,5 +114,9 @@
         opacity: 1;
         cursor: pointer;
         transform: scale(1.1);
+    }
+    .buyBtn:hover {
+        cursor: pointer;
+        transform: scale(0.99);
     }
 }

@@ -2,6 +2,9 @@ import styles from './CoinList.module.css';
 
 import axios from 'axios';
 
+import { IoBookmarkOutline } from 'react-icons/io5';
+import { IoBookmark } from 'react-icons/io5';
+
 import Chart from '../Chart/Chart';
 import Loading2 from '../Loading/Loading2.jsx';
 
@@ -31,6 +34,16 @@ export default CoinList;
 
 // coin card
 function CoinCard({ info, showCoinInfo, currency }) {
+    const [chartData, setChartData] = useState([]);
+    const [isSave, setIsSave] = useState();
+
+    // store a coin
+    function storeCoinHandler(event) {
+        event.stopPropagation();
+
+        setIsSave((pre) => !pre);
+    }
+
     const {
         id,
         image,
@@ -40,8 +53,6 @@ function CoinCard({ info, showCoinInfo, currency }) {
         price_change_percentage_24h: priceChange,
         market_cap_change_24h: marketCap,
     } = info;
-
-    const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
         (async () => {
@@ -68,8 +79,23 @@ function CoinCard({ info, showCoinInfo, currency }) {
     return (
         <div className={styles.container} onClick={() => showCoinInfo(id)}>
             <div className={styles.coinInformation}>
-                {/* name and thumb info */}
+                {/* save btn */}
                 <div className={styles.info}>
+                    {isSave ? (
+                        <IoBookmark
+                            opacity="0.8"
+                            fontSize="1.3rem"
+                            onClick={storeCoinHandler}
+                        />
+                    ) : (
+                        <IoBookmarkOutline
+                            opacity="0.8"
+                            fontSize="1.3rem"
+                            onClick={storeCoinHandler}
+                        />
+                    )}
+
+                    {/* image and coin name  */}
                     <img src={image} alt={symbol} />
                     <div>
                         <p>{symbol.toUpperCase()}</p>
@@ -79,6 +105,7 @@ function CoinCard({ info, showCoinInfo, currency }) {
                 <p className={styles.marketCap}>
                     maket cap {Math.floor(marketCap)}
                 </p>
+
                 {/* price and change price info */}
                 <div className={styles.price}>
                     <p>
@@ -108,7 +135,7 @@ function CoinCard({ info, showCoinInfo, currency }) {
                         height="100%"
                         chartType="price"
                         chartData={chartData}
-                        color={priceChange > 0 ? '#2b913f' : '#f32419'}
+                        color={priceChange > 0 ? '#0fc97f' : '#F6465D'}
                         showChartInfo={false}
                     />
                 ) : (

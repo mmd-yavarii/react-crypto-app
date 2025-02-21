@@ -8,6 +8,12 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 
 setMetaThemColor();
 
+// // exchange coin with currency
+// function exhange(amount) {
+//     const coinPrice = info.market_data.current_price.bmd;
+//     console.log(amount * coinPrice);
+// }
+
 function App() {
     const [currency, setCurrency] = useState({ type: 'usd', symbol: '$' });
     const [error, setError] = useState({

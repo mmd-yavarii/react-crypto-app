@@ -19,15 +19,15 @@ function CoinChart({ info, chartData, chartType, setChartType }) {
                     chartType={chartType}
                     color={
                         info.market_data.price_change_percentage_24h > 0
-                            ? '#2b913f'
-                            : '#f32419'
+                            ? '#0fc97f'
+                            : '#F6465D'
                     }
                     width="100%"
                     height="200px"
                     showChartInfo={true}
                 />
             ) : (
-                <div style={{ height: '250px' }}>
+                <div style={{ height: '200px' }}>
                     <Loading2 />
                 </div>
             )}

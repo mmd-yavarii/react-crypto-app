@@ -3,9 +3,9 @@
     line-height: 1.5;
     font-weight: 400;
 
-    --green-color: #2b913f;
-    --red-color: #f32419;
-    --them-primary-color: #1e90ff;
+    --green-color: #0fc97f;
+    --red-color: #f6465d;
+    --them-primary-color: #ff8c00;
 
     --background-color: #1d1c1c;
     --border-color: #313131;
@@ -31,6 +31,7 @@
     border: none;
     outline: none;
     color: var(--text-primary-color);
+    text-decoration: none;
 }
 
 body {

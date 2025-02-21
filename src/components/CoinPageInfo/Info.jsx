@@ -3,7 +3,7 @@ import { FaArrowTrendDown } from 'react-icons/fa6';
 
 import styles from './CoinPageInfo.module.css';
 
-function CoinInfoSection({ info, currency }) {
+function Info({ info, currency }) {
     return (
         <>
             {/* show coin info */}
@@ -19,7 +19,9 @@ function CoinInfoSection({ info, currency }) {
                     <p>
                         {/* Price :{' '} */}
                         {currency.symbol}{' '}
-                        {info.market_data.current_price.bmd.toLocaleString()}{' '}
+                        {info.market_data.current_price[
+                            currency.type
+                        ].toLocaleString()}{' '}
                     </p>
                     <p>
                         <span
@@ -30,9 +32,10 @@ function CoinInfoSection({ info, currency }) {
                             }
                         >
                             {/* change price percent :{' '} */}
-                            {
-                                info.market_data.price_change_percentage_24h
-                            } %{' '}
+                            {info.market_data.price_change_percentage_24h.toFixed(
+                                2,
+                            )}{' '}
+                            %{' '}
                         </span>
                     </p>
                 </div>
@@ -64,4 +67,4 @@ function CoinInfoSection({ info, currency }) {
     );
 }
 
-export default CoinInfoSection;
+export default Info;

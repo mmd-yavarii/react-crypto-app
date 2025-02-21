@@ -5,7 +5,9 @@ import styles from './CoinPageInfo.module.css';
 
 import { useEffect, useReducer, useState } from 'react';
 
-import CoinInfoSection from './CoinInfo.jsx';
+// CoinPageInfo
+
+import Info from './Info.jsx';
 import TimeRange from './TimeRange.jsx';
 import CoinChart from './CoinChart.jsx';
 
@@ -58,7 +60,7 @@ function CoinPageInfo({ info, currency }) {
 
     return (
         <div className={styles.container}>
-            <CoinInfoSection info={info} currency={currency} />
+            <Info info={info} currency={currency} />
 
             {/* timer range buttons */}
             <TimeRange timeRange={timeRange} dispatch={dispatch} />
@@ -70,6 +72,16 @@ function CoinPageInfo({ info, currency }) {
                 chartType={chartType}
                 setChartType={setChartType}
             />
+
+            <a
+                href={`https://www.binance.com/en/price/${
+                    info.id
+                }/${currency.type.toUpperCase()}`}
+                target="_blank"
+                className={styles.exchangeBtn}
+            >
+                Exchange
+            </a>
         </div>
     );
 }

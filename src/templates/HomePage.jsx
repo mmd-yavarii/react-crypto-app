@@ -51,10 +51,11 @@ function HomePage({ currency, setCurrency, error, setError }) {
             show: true,
             content: (
                 <>
-                    <Loading2 height="45px" />
-                    <Loading2 height="40px" />
-                    <Loading2 height="220px" />
-                    <Loading2 height="31px" />
+                    <Loading2 height="170px" />
+                    <Loading2 height="50px" />
+                    <Loading2 height="150px" />
+                    <Loading2 height="39px" />
+                    <Loading2 height="50px" />
                 </>
             ),
         });
