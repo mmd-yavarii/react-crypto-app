@@ -14,6 +14,9 @@ setMetaThemColor();
 //     console.log(amount * coinPrice);
 // }
 
+// save coins in favorite list
+const savedCoins = JSON.parse(localStorage.getItem('savedCoins')) || [];
+
 function App() {
     const [currency, setCurrency] = useState({ type: 'usd', symbol: '$' });
     const [error, setError] = useState({

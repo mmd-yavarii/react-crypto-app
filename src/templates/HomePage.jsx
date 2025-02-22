@@ -14,7 +14,7 @@ import Loading2 from '../components/Loading/Loading2.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
 import ErrorPage from '../components/ErrorPage/ErrorPage.jsx';
 
-function HomePage({ currency, setCurrency, error, setError }) {
+function HomePage({ currency, setCurrency, savedCoins, setError }) {
     const [coins, setCoins] = useState([]);
 
     const [showLoading, setShowLoading] = useState(false);
