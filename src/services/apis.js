@@ -1,7 +1,7 @@
 // api config
 const BASE_URL = 'https://api.coingecko.com/api/v3';
 const API_KEY = 'CG-Cumz7nKQNwKdLJquCWVCq6BY';
-let PER_PAGE = 15;
+let PER_PAGE = 8;
 
 const getCoinList = (currency, page, sortBy = 'market_cap_desc') =>
     // volume_desc

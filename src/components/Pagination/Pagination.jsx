@@ -4,17 +4,32 @@ import { GrPrevious } from 'react-icons/gr';
 import { useEffect, useReducer } from 'react';
 import styles from './Pagination.module.css';
 
+// scroll to the top of the page after change page
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+}
+
 function reducer(state, action) {
     switch (action.type) {
         case 'next':
-            if (state < 10) return state + 1;
+            if (state < 10) {
+                scrollToTop();
+                return state + 1;
+            }
             return 10;
 
         case 'prev':
-            if (state > 1) return state - 1;
+            if (state > 1) {
+                scrollToTop();
+                return state - 1;
+            }
             return 1;
 
         case 'pageNumber':
+            scrollToTop();
             return action.payload;
 
         default:
@@ -29,42 +44,20 @@ function Pagination({ setPage }) {
         setPage(page);
     }, [page]);
 
-    // scroll to the top of the page after change page
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    }
-
-    // click handler
-    function clickHandler(type, payLoad = 0) {
-        scrollToTop();
-
-        switch (type) {
-            case 'next':
-                dispatch({ type: 'next', payload: '' });
-                return;
-            case 'prev':
-                dispatch({ type: 'prev', payload: '' });
-                return;
-            case 'pageNumber':
-                dispatch({ type: 'pageNumber', payload: +payLoad });
-                return;
-        }
-    }
-
     return (
         <div className={styles.container}>
-            <button onClick={() => clickHandler('prev')}>
+            <button
+                className={page <= 1 ? styles.disabled : null}
+                onClick={() => dispatch({ type: 'prev' })}
+            >
                 <GrPrevious />
             </button>
 
             {page > 2 && (
                 <>
                     <button
-                        onClick={(e) =>
-                            clickHandler('pageNumber', e.target.innerText)
+                        onClick={() =>
+                            dispatch({ type: 'pageNumber', payload: 1 })
                         }
                     >
                         1
@@ -78,8 +71,8 @@ function Pagination({ setPage }) {
                 <>
                     <p>...</p>
                     <button
-                        onClick={(e) =>
-                            clickHandler('pageNumber', e.target.innerText)
+                        onClick={() =>
+                            dispatch({ type: 'pageNumber', payload: 10 })
                         }
                     >
                         10
@@ -87,7 +80,10 @@ function Pagination({ setPage }) {
                 </>
             )}
 
-            <button onClick={() => clickHandler('next')}>
+            <button
+                className={page >= 10 ? styles.disabled : null}
+                onClick={() => dispatch({ type: 'next' })}
+            >
                 <GrNext />
             </button>
         </div>
