@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import { getCoinList, getCoin } from '../services/apis.js';
 
@@ -14,10 +14,31 @@ import Loading2 from '../components/Loading/Loading2.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
 import ErrorPage from '../components/ErrorPage/ErrorPage.jsx';
 
-function HomePage({ currency, setCurrency, savedCoins, setError }) {
-    const [coins, setCoins] = useState([]);
+// set coin reducer
+const initialCoinsState = {
+    isLoading: true,
+    coins: [],
+    error: '',
+};
+function coinsReducer(state, action) {
+    switch (action.type) {
+        case 'LOADING':
+            return { ...state, isLoading: true };
 
-    const [showLoading, setShowLoading] = useState(false);
+        case 'SUCCESS':
+            return { isLoading: false, coins: action.payload, error: '' };
+
+        case 'FAILED':
+            return { isLoading: false, coins: [], error: action.payload };
+
+        default:
+            throw new Error('Invalid Action Type');
+    }
+}
+
+function HomePage({ currency, setCurrency }) {
+    const [coins, dispachCoins] = useReducer(coinsReducer, initialCoinsState);
+
     const [page, setPage] = useState(1);
     const [modal, setModal] = useState({
         show: false,
@@ -27,19 +48,14 @@ function HomePage({ currency, setCurrency, savedCoins, setError }) {
     // get coins to show in main page
     useEffect(() => {
         const URL = getCoinList(currency.type, page);
-        setShowLoading(true);
+        dispachCoins({ type: 'LOADING' });
 
         (async () => {
             try {
                 const response = await axios.get(URL);
-                setCoins(response.data);
+                dispachCoins({ type: 'SUCCESS', payload: response.data });
             } catch (error) {
-                setError({
-                    show: true,
-                    message: error.message,
-                });
-            } finally {
-                setShowLoading(false);
+                dispachCoins({ type: 'FAILED', payload: error.message });
             }
         })();
     }, [page, currency.type]);
@@ -70,7 +86,7 @@ function HomePage({ currency, setCurrency, savedCoins, setError }) {
         } catch (err) {
             setModal({
                 show: true,
-                content: <ErrorPage error={err} />,
+                content: <ErrorPage error={err.message} />,
             });
         }
     }
@@ -82,36 +98,51 @@ function HomePage({ currency, setCurrency, savedCoins, setError }) {
         }
     }
 
-    return (
-        <>
-            {showLoading && <Loading />}
+    if (!coins.error) {
+        return (
+            <>
+                {coins.isLoading && <Loading />}
 
-            <Searchbar showCoinInfo={showCoinInfo} setCurrency={setCurrency} />
+                <Searchbar
+                    isLoading={coins.isLoading}
+                    showCoinInfo={showCoinInfo}
+                    setCurrency={setCurrency}
+                />
 
-            {page == 1 && (
-                <SuggestedCoins
-                    coins={coins.slice(Math.floor(Math.random() * 5), 8)}
+                {page == 1 && (
+                    <SuggestedCoins
+                        coins={coins.coins.slice(
+                            Math.floor(Math.random() * 5),
+                            8,
+                        )}
+                        showCoinInfo={showCoinInfo}
+                        currency={currency}
+                    />
+                )}
+
+                <CoinList
+                    coins={coins.coins}
                     showCoinInfo={showCoinInfo}
                     currency={currency}
                 />
-            )}
 
-            <CoinList
-                coins={coins}
-                showCoinInfo={showCoinInfo}
-                currency={currency}
-            />
+                {modal.show && (
+                    <Modal
+                        content={modal.content}
+                        closeModalHandler={modalCloser}
+                    />
+                )}
 
-            {modal.show && (
-                <Modal
-                    content={modal.content}
-                    closeModalHandler={modalCloser}
-                />
-            )}
-
-            <Pagination setPage={setPage} />
-        </>
-    );
+                <Pagination setPage={setPage} />
+            </>
+        );
+    } else {
+        return (
+            <div style={{ height: '80dvh' }}>
+                <ErrorPage error={coins.error} />
+            </div>
+        );
+    }
 }
 
 export default HomePage;

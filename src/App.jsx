@@ -19,27 +19,12 @@ const savedCoins = JSON.parse(localStorage.getItem('savedCoins')) || [];
 
 function App() {
     const [currency, setCurrency] = useState({ type: 'usd', symbol: '$' });
-    const [error, setError] = useState({
-        show: false,
-        message: '',
-    });
 
     return (
         <>
-            {error.show ? (
-                <div style={{ height: '100dvh' }}>
-                    <ErrorPage error={error} />
-                </div>
-            ) : (
-                <Layout>
-                    <HomePage
-                        currency={currency}
-                        setCurrency={setCurrency}
-                        error={error}
-                        setError={setError}
-                    />
-                </Layout>
-            )}
+            <Layout>
+                <HomePage currency={currency} setCurrency={setCurrency} />
+            </Layout>
         </>
     );
 }

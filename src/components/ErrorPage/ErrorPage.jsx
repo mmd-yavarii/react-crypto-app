@@ -10,7 +10,7 @@ function ErrorPage({ error }) {
             <img src="./error.webp" alt="Error occurred" />
 
             <h1>Opps !</h1>
-            <p>{error?.message || 'An unexpected error occurred.'}</p>
+            <p>{error || 'An unexpected error occurred.'}</p>
             <button onClick={reloader}>Reload App</button>
         </div>
     );
