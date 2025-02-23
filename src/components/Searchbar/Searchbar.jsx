@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import { IoSearch } from 'react-icons/io5';
+import { PulseLoader } from 'react-spinners';
 
 import styles from './Searchbar.module.css';
-import Loading from '../Loading/Loading';
 import ErrorPage from '../ErrorPage/ErrorPage.jsx';
 
 import { search } from '../../services/apis.js';
+import { loadingColor } from '../../helpers/helper.js';
 
 function Searchbar({ showCoinInfo, setCurrency }) {
     const [response, setResponse] = useState([]);
@@ -113,7 +114,11 @@ function Searchbar({ showCoinInfo, setCurrency }) {
                 {showSearchPage && (
                     <div className={styles.saerchResult}>
                         {/* show loading */}
-                        {showLoading && <Loading />}
+                        {showLoading && (
+                            <div className={styles.loader}>
+                                <PulseLoader color={loadingColor} size="8px" />
+                            </div>
+                        )}
 
                         {/* show search response page */}
                         {!!response.length &&

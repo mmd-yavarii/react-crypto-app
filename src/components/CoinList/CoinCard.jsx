@@ -6,7 +6,7 @@ import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
 
 import Chart from '../Chart/Chart';
-import Loading2 from '../Loading/Loading2.jsx';
+import Loading from '../Loading/Loading.jsx';
 
 import { useEffect, useState } from 'react';
 import { getMarkeChart } from '../../services/apis.js';
@@ -118,7 +118,7 @@ function CoinCard({ info, showCoinInfo, currency }) {
                         showChartInfo={false}
                     />
                 ) : (
-                    <Loading2 />
+                    <Loading />
                 )}
             </div>
         </div>

@@ -8,4 +8,8 @@ function setMetaThemColor() {
     }
 }
 
-export { setMetaThemColor };
+const loadingColor = getComputedStyle(root).getPropertyValue(
+    '--text-primary-color',
+);
+
+export { setMetaThemColor, loadingColor };

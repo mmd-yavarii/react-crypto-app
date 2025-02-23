@@ -55,7 +55,7 @@
 
 .saerchResult {
     width: 100%;
-    min-height: 100px;
+
     max-height: 300px;
     overflow: scroll;
     position: absolute;
@@ -84,6 +84,14 @@
     border-radius: 50%;
     background-color: #fff;
     width: 1.3em;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    padding-top: 1.4em;
 }
 
 @media (min-width: 500px) {

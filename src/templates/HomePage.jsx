@@ -5,12 +5,12 @@ import { useEffect, useReducer, useState } from 'react';
 import { getCoinList, getCoin } from '../services/apis.js';
 
 import Pagination from '../components/Pagination/Pagination.jsx';
-import Loading from '../components/Loading/Loading.jsx';
+import HomePageLoading from '../components/Loading/HomePageLoading.jsx';
 import CoinList from '../components/CoinList/CoinList.jsx';
 import Searchbar from '../components/Searchbar/Searchbar.jsx';
 import Modal from '../components/Modal/Modal.jsx';
 import CoinPageInfo from '../components/CoinPageInfo/CoinPageInfo.jsx';
-import Loading2 from '../components/Loading/Loading2.jsx';
+import Loading from '../components/Loading/Loading.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
 import ErrorPage from '../components/ErrorPage/ErrorPage.jsx';
 
@@ -67,11 +67,11 @@ function HomePage({ currency, setCurrency }) {
             show: true,
             content: (
                 <>
-                    <Loading2 height="170px" />
-                    <Loading2 height="50px" />
-                    <Loading2 height="150px" />
-                    <Loading2 height="39px" />
-                    <Loading2 height="50px" />
+                    <Loading height="170px" />
+                    <Loading height="50px" />
+                    <Loading height="150px" />
+                    <Loading height="39px" />
+                    <Loading height="50px" />
                 </>
             ),
         });
@@ -101,7 +101,7 @@ function HomePage({ currency, setCurrency }) {
     if (!coins.error) {
         return (
             <>
-                {coins.isLoading && <Loading />}
+                {coins.isLoading && <HomePageLoading />}
 
                 <Searchbar
                     isLoading={coins.isLoading}

@@ -1,7 +1,7 @@
 import styles from './CoinPageInfo.module.css';
 
 import Chart from '../Chart/Chart.jsx';
-import Loading2 from '../Loading/Loading2.jsx';
+import Loading from '../Loading/Loading.jsx';
 
 function CoinChart({ info, chartData, chartType, setChartType }) {
     // set chart type
@@ -28,7 +28,7 @@ function CoinChart({ info, chartData, chartType, setChartType }) {
                 />
             ) : (
                 <div style={{ height: '200px' }}>
-                    <Loading2 />
+                    <Loading />
                 </div>
             )}
             <div className={styles.buttonsContainer}>
