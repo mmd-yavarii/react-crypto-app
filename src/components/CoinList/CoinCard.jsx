@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import styles from './CoinList.module.css';
-
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
 
@@ -12,17 +11,28 @@ import { useEffect, useState, useContext } from 'react';
 import { getMarkeChart } from '../../services/apis.js';
 
 import { CurrencyContext } from '../../contexts/CurrencyProvider.jsx';
+import { FavoritesContext } from '../../contexts/FavoritesProvider.jsx';
 
 function CoinCard({ info, showCoinInfo }) {
     const { currency } = useContext(CurrencyContext);
+    const { favoriteCoins, dispatchFavoriteCoins } =
+        useContext(FavoritesContext);
 
     const [chartData, setChartData] = useState([]);
-    const [isSave, setIsSave] = useState();
+
+    const isCoinInclude = favoriteCoins.some((i) => i.id == info.id);
+    const [isSave, setIsSave] = useState(isCoinInclude);
 
     // save coin as favorite
     function storeCoinHandler(event) {
         event.stopPropagation();
-        console.log('Need to learn context for this ');
+
+        if (!isSave) {
+            dispatchFavoriteCoins({ type: 'ADD', payload: info });
+        } else {
+            dispatchFavoriteCoins({ type: 'REMOVE', payload: info.id });
+        }
+
         setIsSave((pre) => !pre);
     }
 

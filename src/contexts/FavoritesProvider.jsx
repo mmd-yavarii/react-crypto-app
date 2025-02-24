@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 
 export const FavoritesContext = createContext();
 
@@ -15,8 +15,17 @@ function reducer(state, action) {
     }
 }
 
+const initialState = JSON.parse(localStorage.getItem('favoriteCoins')) || [];
+
 function FavoritesProvider({ children }) {
-    const [favoriteCoins, dispatchFavoriteCoins] = useReducer(reducer, []);
+    const [favoriteCoins, dispatchFavoriteCoins] = useReducer(
+        reducer,
+        initialState,
+    );
+
+    useEffect(() => {
+        localStorage.setItem('favoriteCoins', JSON.stringify(favoriteCoins));
+    }, [favoriteCoins]);
 
     return (
         <FavoritesContext.Provider
