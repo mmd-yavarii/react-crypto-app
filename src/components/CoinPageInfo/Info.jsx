@@ -3,7 +3,12 @@ import { FaArrowTrendDown } from 'react-icons/fa6';
 
 import styles from './CoinPageInfo.module.css';
 
-function Info({ info, currency }) {
+import { useContext } from 'react';
+import { CurrencyContext } from '../../contexts/CurrencyProvider.jsx';
+
+function Info({ info }) {
+    const { currency } = useContext(CurrencyContext);
+
     return (
         <>
             {/* show coin info */}

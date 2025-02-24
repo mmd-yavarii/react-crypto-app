@@ -8,10 +8,14 @@ import { IoBookmark } from 'react-icons/io5';
 import Chart from '../Chart/Chart';
 import Loading from '../Loading/Loading.jsx';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getMarkeChart } from '../../services/apis.js';
 
-function CoinCard({ info, showCoinInfo, currency }) {
+import { CurrencyContext } from '../../contexts/CurrencyProvider.jsx';
+
+function CoinCard({ info, showCoinInfo }) {
+    const { currency } = useContext(CurrencyContext);
+
     const [chartData, setChartData] = useState([]);
     const [isSave, setIsSave] = useState();
 

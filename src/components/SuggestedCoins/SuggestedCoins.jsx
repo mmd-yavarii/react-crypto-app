@@ -1,6 +1,11 @@
 import styles from './SuggestedCoins.module.css';
 
-function SuggestedCoins({ coins, showCoinInfo, currency }) {
+import { useContext } from 'react';
+import { CurrencyContext } from '../../contexts/CurrencyProvider';
+
+function SuggestedCoins({ coins, showCoinInfo }) {
+    const { currency } = useContext(CurrencyContext);
+
     return (
         <>
             <h4 className="title">Suggested Coins</h4>

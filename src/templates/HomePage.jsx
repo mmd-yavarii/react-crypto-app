@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useState, useContext } from 'react';
+import { CurrencyContext } from '../contexts/CurrencyProvider.jsx';
 
 import { getCoinList, getCoin } from '../services/apis.js';
 
@@ -36,8 +37,9 @@ function coinsReducer(state, action) {
     }
 }
 
-function HomePage({ currency, setCurrency }) {
+function HomePage({}) {
     const [coins, dispachCoins] = useReducer(coinsReducer, initialCoinsState);
+    const { currency, setCurrency } = useContext(CurrencyContext);
 
     const [page, setPage] = useState(1);
     const [modal, setModal] = useState({
@@ -81,7 +83,7 @@ function HomePage({ currency, setCurrency }) {
 
             setModal({
                 show: true,
-                content: <CoinPageInfo info={data} currency={currency} />,
+                content: <CoinPageInfo info={data} />,
             });
         } catch (err) {
             setModal({
@@ -116,15 +118,10 @@ function HomePage({ currency, setCurrency }) {
                             8,
                         )}
                         showCoinInfo={showCoinInfo}
-                        currency={currency}
                     />
                 )}
 
-                <CoinList
-                    coins={coins.coins}
-                    showCoinInfo={showCoinInfo}
-                    currency={currency}
-                />
+                <CoinList coins={coins.coins} showCoinInfo={showCoinInfo} />
 
                 {modal.show && (
                     <Modal

@@ -3,7 +3,8 @@ import { getMarkeChart } from '../../services/apis.js';
 
 import styles from './CoinPageInfo.module.css';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
+import { CurrencyContext } from '../../contexts/CurrencyProvider.jsx';
 
 // CoinPageInfo
 
@@ -34,7 +35,9 @@ function reducer(state, action) {
     }
 }
 
-function CoinPageInfo({ info, currency }) {
+function CoinPageInfo({ info }) {
+    const { currency } = useContext(CurrencyContext);
+
     const [timeRange, dispatch] = useReducer(reducer, 1);
 
     const [chartType, setChartType] = useState('prices');
@@ -60,7 +63,7 @@ function CoinPageInfo({ info, currency }) {
 
     return (
         <div className={styles.container}>
-            <Info info={info} currency={currency} />
+            <Info info={info} />
 
             {/* timer range buttons */}
             <TimeRange timeRange={timeRange} dispatch={dispatch} />
