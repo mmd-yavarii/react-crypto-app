@@ -10,8 +10,8 @@
 }
 
 .dashboard {
-    width: 2.2em;
-    height: 2.2em;
+    width: 3em;
+    height: 3em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,6 +21,7 @@
 }
 
 .logInBtn {
+    font-weight: bold;
     background-color: transparent;
     color: var(--them-primary-color);
 }
