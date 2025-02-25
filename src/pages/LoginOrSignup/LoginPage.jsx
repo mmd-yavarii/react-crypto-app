@@ -121,8 +121,17 @@ function LoginPage() {
 
                 {/* buttons of sign up and submit */}
                 <div className={styles.btnContainer}>
-                    <a href="">Don't have an acount</a>
-                    <button type="submit">Login</button>
+                    {/* <a href="">Don't have an acount</a> */}
+                    <button
+                        type="submit"
+                        className={
+                            !validation.password && !validHandler.email
+                                ? styles.unableBtn
+                                : null
+                        }
+                    >
+                        Login
+                    </button>
                 </div>
             </form>
         </div>
