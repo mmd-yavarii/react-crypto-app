@@ -64,28 +64,29 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.2em;
 }
 
 .remember label {
-    padding-bottom: 0.8em;
+    padding-bottom: 1em;
 }
 .remember input {
     width: 6px;
     height: 6px;
-    transform: scale(0.8);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
+    transform: scale(0.6);
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
     appearance: none;
     -webkit-appearance: none;
 }
 .remember input:checked {
-    border-color: var(--them-primary-color);
+    background-color: var(--them-primary-color);
+
     position: relative;
 }
 .remember input:checked::after {
     content: '✓';
-    color: var(--them-primary-color);
+    color: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
