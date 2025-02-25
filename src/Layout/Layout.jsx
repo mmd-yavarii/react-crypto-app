@@ -10,8 +10,10 @@ function Layout({ children }) {
     return (
         <>
             <header className={styles.header}>
+                
                 <h3>Explore</h3>
 
+                {/* log in or dashboard button */}
                 {isLogin ? (
                     <button className={styles.dashboard}>
                         <CiUser fontSize="1.3rem" opacity="0.7" />
