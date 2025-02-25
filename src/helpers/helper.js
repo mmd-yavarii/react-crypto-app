@@ -1,3 +1,7 @@
+const passwordRegex = /^[A-Za-z\d]{9,}$/;
+const emailRegex =
+    /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 function setMetaThemColor() {
     const themeColor = document.getElementById('themeColor');
 
@@ -12,4 +16,4 @@ const loadingColor = getComputedStyle(root).getPropertyValue(
     '--text-primary-color',
 );
 
-export { setMetaThemColor, loadingColor };
+export { setMetaThemColor, loadingColor, passwordRegex, emailRegex };

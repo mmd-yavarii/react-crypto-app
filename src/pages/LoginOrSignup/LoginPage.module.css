@@ -1,0 +1,114 @@
+.container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container input {
+    padding: 1em;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    outline: none;
+    background-color: var(--them-secondary-color);
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.valid:focus {
+    color: var(--green-color);
+}
+.invalid:focus {
+    color: var(--red-color);
+}
+
+/* button and hanve no  acount link */
+.btnContainer {
+    width: 90vw;
+    position: fixed;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+}
+.btnContainer button {
+    background-color: var(--them-primary-color);
+    color: #fff;
+    border-radius: 12px;
+    padding: 1em;
+    width: 100%;
+    transition: all 0.3s;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+.btnContainer a {
+    opacity: 0.5;
+    font-size: 0.8rem;
+    display: inline-block;
+    cursor: default;
+    text-align: center;
+    width: 100%;
+}
+
+/* checkbox style */
+.remember {
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.remember label {
+    padding-bottom: 0.8em;
+}
+.remember input {
+    width: 6px;
+    height: 6px;
+    transform: scale(0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.remember input:checked {
+    border-color: var(--them-primary-color);
+    position: relative;
+}
+.remember input:checked::after {
+    content: '✓';
+    color: var(--them-primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ruls stye */
+.rullsContainer {
+    margin-bottom: 1.5em;
+}
+.rulls {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    display: block;
+    margin: 1em 0;
+}
+.rulls::before {
+    content: '.';
+    margin-right: 5px;
+}
+
+@media (min-width: 600px) {
+    .remember *,
+    .btnContainer a,
+    .btnContainer button {
+        cursor: pointer;
+    }
+    .btnContainer button:hover {
+        opacity: 0.9;
+        transform: scale(0.99);
+    }
+}
