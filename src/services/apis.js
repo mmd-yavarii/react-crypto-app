@@ -16,4 +16,6 @@ const getCoin = (id) => `${BASE_URL}/coins/${id}?x_cg_demo_api_key=${API_KEY}`;
 const search = (inpValue) =>
     `${BASE_URL}/search?x_cg_demo_api_key=${API_KEY}&query=${inpValue}`;
 
-export { getCoinList, getMarkeChart, getCoin, search };
+const posLogin = 'https://reqres.in/api/login';
+
+export { getCoinList, getMarkeChart, getCoin, search, posLogin };

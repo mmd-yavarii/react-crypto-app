@@ -1,6 +1,6 @@
 import { setMetaThemColor } from './helpers/helper.js';
 
-import HomePage from './templates/HomePage';
+import HomePage from './pages/HomePage.jsx';
 import Layout from './Layout/Layout';
 import FavoritesProvider from './contexts/FavoritesProvider.jsx';
 import CurrencyProvider from './contexts/CurrencyProvider.jsx';
@@ -11,17 +11,17 @@ import LoginPage from './pages/LoginOrSignup/LoginPage.jsx';
 setMetaThemColor();
 function App() {
     return (
-        // <IsLoginProvider>
-        //     <Layout>
-        //         <FavoritesProvider>
-        //             <CurrencyProvider>
-        //                 <HomePage />
-        //             </CurrencyProvider>
-        //         </FavoritesProvider>
-        //     </Layout>
-        // </IsLoginProvider>
+        <IsLoginProvider>
+            {/* <Layout>
+                <FavoritesProvider>
+                    <CurrencyProvider>
+                        <HomePage />
+                    </CurrencyProvider>
+                </FavoritesProvider>
+            </Layout> */}
 
-        <LoginPage />
+            <LoginPage />
+        </IsLoginProvider>
     );
 }
 

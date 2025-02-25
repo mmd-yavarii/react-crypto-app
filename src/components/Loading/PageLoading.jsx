@@ -24,7 +24,7 @@ const loader = {
     WebkitBackdropFilter: 'blur(5.4px)',
 };
 
-function HomePageLoading() {
+function PageLoading() {
     return (
         <div style={loader}>
             <PulseLoader color={loadingColor} />
@@ -32,4 +32,4 @@ function HomePageLoading() {
     );
 }
 
-export default HomePageLoading;
+export default PageLoading;

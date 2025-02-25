@@ -6,7 +6,7 @@ import { CurrencyContext } from '../contexts/CurrencyProvider.jsx';
 import { getCoinList, getCoin } from '../services/apis.js';
 
 import Pagination from '../components/Pagination/Pagination.jsx';
-import HomePageLoading from '../components/Loading/HomePageLoading.jsx';
+import PageLoading from '../components/Loading/PageLoading.jsx';
 import CoinList from '../components/CoinList/CoinList.jsx';
 import Searchbar from '../components/Searchbar/Searchbar.jsx';
 import Modal from '../components/Modal/Modal.jsx';
@@ -103,7 +103,7 @@ function HomePage({}) {
     if (!coins.error) {
         return (
             <>
-                {coins.isLoading && <HomePageLoading />}
+                {coins.isLoading && <PageLoading />}
 
                 <Searchbar
                     isLoading={coins.isLoading}
