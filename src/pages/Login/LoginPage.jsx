@@ -7,6 +7,7 @@ import { posLogin } from '../../services/apis.js';
 import styles from './LoginPage.module.css';
 
 import PageLoading from '../../components/Loading/PageLoading.jsx';
+import { replace, useNavigate } from 'react-router-dom';
 
 const initialState = {
     email: 'eve.holt@reqres.in',
@@ -31,6 +32,7 @@ function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [loginState, dispatch] = useReducer(reducer, initialState);
     const { setIsLogin, changeLogin } = useContext(IsLoginContext);
+    const navigate = useNavigate();
 
     const [validation, setValidation] = useState({
         email: emailRegex.test(loginState.email),
@@ -54,7 +56,8 @@ function LoginPage() {
 
                 const json = await req.json();
                 changeLogin(loginState.remember, json.token);
-                history.back();
+
+                navigate('/', { replace: true });
             } catch (error) {
                 alert(error);
             } finally {
