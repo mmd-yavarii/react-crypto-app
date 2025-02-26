@@ -16,22 +16,26 @@ function Layout({ children }) {
         <>
             <header className={styles.header}>
                 {location.pathname === '/' ? (
-                    <h3>Explore</h3>
+                    <>
+                        <h3>Explore</h3>
+
+                        {isLogin ? (
+                            <button className={styles.dashboard}>
+                                <CiUser fontSize="1.3rem" opacity="0.7" />
+                            </button>
+                        ) : (
+                            <Link to="/login">
+                                <button className={styles.logInBtn}>
+                                    Login
+                                </button>
+                            </Link>
+                        )}
+                    </>
                 ) : (
                     <BiArrowBack
                         fontSize="1.5rem"
                         onClick={() => navigate(-1)}
                     />
-                )}
-
-                {isLogin ? (
-                    <button className={styles.dashboard}>
-                        <CiUser fontSize="1.3rem" opacity="0.7" />
-                    </button>
-                ) : (
-                    <Link to="/login">
-                        <button className={styles.logInBtn}>Login</button>
-                    </Link>
                 )}
             </header>
 

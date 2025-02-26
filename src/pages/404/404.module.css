@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container img {
+    height: 6em;
+    opacity: 0.8;
+}
+.container h1 {
+    margin: 0.3em 0;
+}
+.container h4 {
+    opacity: 0.8;
+}
+.container a {
+    padding: 0.3em;
+    font-size: 1rem;
+    margin-top: 1em;
+    border-radius: 7px;
+    background-color: var(--them-primary-color);
+    color: #ffff;
+}

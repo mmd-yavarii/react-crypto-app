@@ -10,7 +10,8 @@ import FavoritesProvider from './contexts/FavoritesProvider.jsx';
 import CurrencyProvider from './contexts/CurrencyProvider.jsx';
 import IsLoginProvider from './contexts/IsLoginProvider.jsx';
 
-import LoginPage from './pages/LoginOrSignup/LoginPage.jsx';
+import PageNotFound from './pages/404/404.jsx';
+import LoginPage from './pages/Login/LoginPage.jsx';
 
 setMetaThemColor();
 
@@ -23,6 +24,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/login" element={<LoginPage />} />
+                            <Route path="*" element={<PageNotFound />} />
                         </Routes>
                     </CurrencyProvider>
                 </FavoritesProvider>
