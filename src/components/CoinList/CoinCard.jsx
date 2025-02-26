@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import styles from './CoinList.module.css';
 import { IoBookmarkOutline } from 'react-icons/io5';
@@ -9,12 +10,14 @@ import Loading from '../Loading/Loading.jsx';
 
 import { useEffect, useState, useContext } from 'react';
 import { getMarkeChart } from '../../services/apis.js';
+import { IsLoginContext } from '../../contexts/IsLoginProvider.jsx';
 
 import { CurrencyContext } from '../../contexts/CurrencyProvider.jsx';
 import { FavoritesContext } from '../../contexts/FavoritesProvider.jsx';
 
 function CoinCard({ info, showCoinInfo }) {
     const { currency } = useContext(CurrencyContext);
+    const { isLogin } = useContext(IsLoginContext);
     const { favoriteCoins, dispatchFavoriteCoins } =
         useContext(FavoritesContext);
 
@@ -72,21 +75,13 @@ function CoinCard({ info, showCoinInfo }) {
     return (
         <div className={styles.container} onClick={() => showCoinInfo(id)}>
             <div className={styles.coinInformation}>
-                {/* save btn */}
                 <div className={styles.info}>
-                    {isSave ? (
-                        <IoBookmark
-                            opacity="0.8"
-                            fontSize="1.3rem"
-                            onClick={storeCoinHandler}
-                        />
-                    ) : (
-                        <IoBookmarkOutline
-                            opacity="0.8"
-                            fontSize="1.3rem"
-                            onClick={storeCoinHandler}
-                        />
-                    )}
+                    {/* save btn */}
+                    <Bookmark
+                        isLogin={isLogin}
+                        isSave={isSave}
+                        storeCoinHandler={storeCoinHandler}
+                    />
 
                     {/* image and coin name  */}
                     <img src={image} alt={symbol} />
@@ -139,3 +134,23 @@ function CoinCard({ info, showCoinInfo }) {
     );
 }
 export default CoinCard;
+
+function Bookmark({ isLogin, isSave, storeCoinHandler }) {
+    return !isLogin ? (
+        <Link to="/login" onClick={(e) => e.stopPropagation()}>
+            <IoBookmarkOutline opacity="0.8" fontSize="1.3rem" />
+        </Link>
+    ) : isSave ? (
+        <IoBookmark
+            opacity="0.8"
+            fontSize="1.3rem"
+            onClick={storeCoinHandler}
+        />
+    ) : (
+        <IoBookmarkOutline
+            opacity="0.8"
+            fontSize="1.3rem"
+            onClick={storeCoinHandler}
+        />
+    );
+}
