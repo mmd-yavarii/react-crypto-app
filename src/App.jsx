@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+
 import { setMetaThemColor } from './helpers/helper.js';
 
 import HomePage from './pages/HomePage.jsx';
@@ -10,18 +12,20 @@ import LoginPage from './pages/LoginOrSignup/LoginPage.jsx';
 import { ImRocket } from 'react-icons/im';
 
 setMetaThemColor();
+
 function App() {
     return (
         <IsLoginProvider>
-            {/* <Layout>
+            <Layout>
                 <FavoritesProvider>
                     <CurrencyProvider>
-                        <HomePage />
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                        </Routes>
                     </CurrencyProvider>
                 </FavoritesProvider>
-            </Layout> */}
-
-            <LoginPage />
+            </Layout>
         </IsLoginProvider>
     );
 }

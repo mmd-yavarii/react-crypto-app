@@ -54,8 +54,7 @@ function LoginPage() {
 
                 const json = await req.json();
                 changeLogin(loginState.remember, json.token);
-
-                // get back to home page
+                history.back();
             } catch (error) {
                 alert(error);
             } finally {

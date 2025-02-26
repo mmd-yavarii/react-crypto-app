@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Layout.module.css';
 import { CiUser } from 'react-icons/ci';
 
@@ -10,7 +12,6 @@ function Layout({ children }) {
     return (
         <>
             <header className={styles.header}>
-                
                 <h3>Explore</h3>
 
                 {/* log in or dashboard button */}
@@ -19,7 +20,9 @@ function Layout({ children }) {
                         <CiUser fontSize="1.3rem" opacity="0.7" />
                     </button>
                 ) : (
-                    <button className={styles.logInBtn}>Login</button>
+                    <Link to={'/login'}>
+                        <button className={styles.logInBtn}>Login</button>
+                    </Link>
                 )}
             </header>
 
