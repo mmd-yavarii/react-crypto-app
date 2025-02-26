@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 
 import { setMetaThemColor } from './helpers/helper.js';
@@ -9,7 +11,6 @@ import CurrencyProvider from './contexts/CurrencyProvider.jsx';
 import IsLoginProvider from './contexts/IsLoginProvider.jsx';
 
 import LoginPage from './pages/LoginOrSignup/LoginPage.jsx';
-import { ImRocket } from 'react-icons/im';
 
 setMetaThemColor();
 
