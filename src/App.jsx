@@ -7,6 +7,7 @@ import CurrencyProvider from './contexts/CurrencyProvider.jsx';
 import IsLoginProvider from './contexts/IsLoginProvider.jsx';
 
 import LoginPage from './pages/LoginOrSignup/LoginPage.jsx';
+import { ImRocket } from 'react-icons/im';
 
 setMetaThemColor();
 function App() {

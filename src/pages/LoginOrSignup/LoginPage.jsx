@@ -29,12 +29,12 @@ function reducer(state, action) {
 
 function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
-    const [loginForm, dispatch] = useReducer(reducer, initialState);
-    const { setIsLogin, isLogin } = useContext(IsLoginContext);
+    const [loginState, dispatch] = useReducer(reducer, initialState);
+    const { setIsLogin, changeLogin } = useContext(IsLoginContext);
 
     const [validation, setValidation] = useState({
-        email: emailRegex.test(loginForm.email),
-        password: passwordRegex.test(loginForm.passwod),
+        email: emailRegex.test(loginState.email),
+        password: passwordRegex.test(loginState.passwod),
     });
 
     // submit handler
@@ -46,18 +46,14 @@ function LoginPage() {
                 const req = await fetch(posLogin, {
                     method: 'POST',
                     body: JSON.stringify({
-                        email: loginForm.email,
-                        password: loginForm.passwod,
+                        email: loginState.email,
+                        password: loginState.passwod,
                     }),
                     headers: { 'Content-type': 'application/json' },
                 });
 
                 const json = await req.json();
-                setIsLogin(json.token);
-
-                // save token in storage (remember == true)
-                loginForm.remember &&
-                    localStorage.setItem('isLogin', JSON.stringify(isLogin));
+                changeLogin(loginState.remember, json.token);
 
                 // get back to home page
             } catch (error) {
@@ -110,7 +106,7 @@ function LoginPage() {
                             }
                             type="text"
                             placeholder="Enter Your Email"
-                            value={loginForm.email}
+                            value={loginState.email}
                             name="email"
                             onChange={textInputHandler}
                         />
@@ -122,7 +118,7 @@ function LoginPage() {
                             }
                             type="password"
                             placeholder="Enter Your Password"
-                            value={loginForm.password}
+                            value={loginState.password}
                             name="password"
                             onChange={textInputHandler}
                         />
@@ -134,7 +130,7 @@ function LoginPage() {
                         <input
                             type="checkbox"
                             id="remember"
-                            checked={loginForm.remember}
+                            checked={loginState.remember}
                             onChange={() => dispatch({ type: 'REMEMBER' })}
                         />
                     </div>
