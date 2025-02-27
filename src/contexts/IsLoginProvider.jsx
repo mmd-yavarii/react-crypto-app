@@ -1,8 +1,12 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const IsLoginContext = createContext();
 
 const initialState = localStorage.getItem('isLogin') || '';
+
+if (!('isLogin' in localStorage)) {
+    localStorage.setItem('isLogin', '');
+}
 
 function IsLoginProvider({ children }) {
     const [isLogin, setIsLogin] = useState(initialState);

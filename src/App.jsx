@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import { Routes, Route } from 'react-router-dom';
 
 import { setMetaThemColor } from './helpers/helper.js';
