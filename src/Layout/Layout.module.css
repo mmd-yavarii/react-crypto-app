@@ -27,6 +27,13 @@
     color: var(--them-primary-color);
 }
 
+.logOut {
+    background-color: transparent;
+    color: var(--red-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 @media (min-width: 500px) {
     .dashboard,
     .logInBtn {

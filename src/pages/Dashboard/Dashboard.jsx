@@ -4,17 +4,12 @@ import styles from './Dashboard.module.css';
 import { CiUser } from 'react-icons/ci';
 
 import CoinCard from '../../components/CoinCard/CoinCard';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard({ showCoinInfo }) {
     const [favorites, setFavorites] = useState(
         JSON.parse(localStorage.getItem('favoriteCoins')) || [],
     );
-
-    useEffect(() => {
-        const storedFavorites =
-            JSON.parse(localStorage.getItem('favoriteCoins')) || [];
-        setFavorites(storedFavorites);
-    }, []);
 
     return (
         <div className={styles.container}>
@@ -25,7 +20,6 @@ function Dashboard({ showCoinInfo }) {
                 <div>
                     <h4>Mohammad Yavarii</h4>
                     <p>eve.holt@reqres.in</p>
-                    <button className={styles.logOut}>Logout</button>
                 </div>
             </header>
 

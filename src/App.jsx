@@ -35,7 +35,7 @@ function App() {
                     />
                     <Route path="/login" element={<LoginPage />} />
                     <Route
-                        path="dashboard"
+                        path="/dashboard"
                         element={<Dashboard showCoinInfo={showCoinInfo} />}
                     />
                     <Route path="*" element={<PageNotFound />} />

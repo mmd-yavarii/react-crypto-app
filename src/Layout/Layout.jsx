@@ -8,9 +8,16 @@ import { BiArrowBack } from 'react-icons/bi';
 import { IsLoginContext } from '../contexts/IsLoginProvider';
 
 function Layout({ children }) {
-    const { isLogin } = useContext(IsLoginContext);
+    const { isLogin, changeLogin } = useContext(IsLoginContext);
     const location = useLocation();
     const navigate = useNavigate();
+
+    // log out
+    function logOutHandler() {
+        localStorage.removeItem('isLogin');
+        changeLogin(false);
+        navigate('/');
+    }
 
     return (
         <>
@@ -34,10 +41,20 @@ function Layout({ children }) {
                         )}
                     </>
                 ) : (
-                    <BiArrowBack
-                        fontSize="1.5rem"
-                        onClick={() => navigate(-1)}
-                    />
+                    <>
+                        <BiArrowBack
+                            fontSize="1.5rem"
+                            onClick={() => navigate(-1)}
+                        />
+                        {location.pathname === '/dashboard' && (
+                            <button
+                                onClick={logOutHandler}
+                                className={styles.logOut}
+                            >
+                                Logout
+                            </button>
+                        )}
+                    </>
                 )}
             </header>
 

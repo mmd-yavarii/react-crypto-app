@@ -26,13 +26,6 @@
 .container header h4 {
     font-size: 0.9rem;
 }
-.logOut {
-    background-color: transparent;
-    color: var(--red-color);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-top: 1em;
-}
 
 /* favorited coins */
 .noCoinFound {
