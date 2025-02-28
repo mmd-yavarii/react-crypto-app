@@ -20,9 +20,11 @@ function Layout({ children }) {
                         <h3>Explore</h3>
 
                         {isLogin ? (
-                            <button className={styles.dashboard}>
-                                <CiUser fontSize="1.3rem" opacity="0.7" />
-                            </button>
+                            <Link to="/dashboard">
+                                <button className={styles.dashboard}>
+                                    <CiUser fontSize="1.3rem" opacity="0.7" />
+                                </button>
+                            </Link>
                         ) : (
                             <Link to="/login">
                                 <button className={styles.logInBtn}>

@@ -37,15 +37,11 @@ function coinsReducer(state, action) {
     }
 }
 
-function HomePage({}) {
+function HomePage({ showCoinInfo }) {
     const [coins, dispachCoins] = useReducer(coinsReducer, initialCoinsState);
     const { currency, setCurrency } = useContext(CurrencyContext);
 
     const [page, setPage] = useState(1);
-    const [modal, setModal] = useState({
-        show: false,
-        content: 'hello',
-    });
 
     // get coins to show in main page
     useEffect(() => {
@@ -61,44 +57,6 @@ function HomePage({}) {
             }
         })();
     }, [page, currency.type]);
-
-    // show coin info in modal
-    async function showCoinInfo(id) {
-        // set loading
-        setModal({
-            show: true,
-            content: (
-                <>
-                    <Loading height="170px" />
-                    <Loading height="50px" />
-                    <Loading height="150px" />
-                    <Loading height="39px" />
-                    <Loading height="50px" />
-                </>
-            ),
-        });
-        try {
-            const response = await axios.get(getCoin(id));
-            const data = response.data;
-
-            setModal({
-                show: true,
-                content: <CoinPageInfo info={data} />,
-            });
-        } catch (err) {
-            setModal({
-                show: true,
-                content: <ErrorPage error={err.message} />,
-            });
-        }
-    }
-
-    // modal closer
-    function modalCloser(e) {
-        if (e.target.classList.contains('close')) {
-            setModal({ show: false, content: '' });
-        }
-    }
 
     if (!coins.error) {
         return (
@@ -122,13 +80,6 @@ function HomePage({}) {
                 )}
 
                 <CoinList coins={coins.coins} showCoinInfo={showCoinInfo} />
-
-                {modal.show && (
-                    <Modal
-                        content={modal.content}
-                        closeModalHandler={modalCloser}
-                    />
-                )}
 
                 <Pagination setPage={setPage} />
             </>

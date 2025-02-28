@@ -1,0 +1,55 @@
+/* profile */
+.container header {
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1em;
+}
+
+.profileImage {
+    width: 4em;
+    height: 4em;
+    border: 1px solid var(--border-color);
+    background-color: var(--them-secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container header p {
+    opacity: 0.5;
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+.container header h4 {
+    font-size: 0.9rem;
+}
+.logOut {
+    background-color: transparent;
+    color: var(--red-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1em;
+}
+
+/* favorited coins */
+.noCoinFound {
+    opacity: 0.5;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+/* cards */
+.image {
+    width: 2em;
+    background-color: var(--them-secondary-color);
+    border-radius: 50px;
+    padding: 0.1em;
+    border: 1px solid var(--border-color);
+}

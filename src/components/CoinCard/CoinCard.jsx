@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-import styles from './CoinList.module.css';
+import styles from './CoinCard.module.css';
+
 import { IoBookmarkOutline } from 'react-icons/io5';
 import { IoBookmark } from 'react-icons/io5';
 
-import Chart from '../Chart/Chart';
+import Chart from '../Chart/Chart.jsx';
 import Loading from '../Loading/Loading.jsx';
 
 import { useEffect, useState, useContext } from 'react';
