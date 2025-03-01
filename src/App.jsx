@@ -31,7 +31,6 @@ function App() {
                         path="/"
                         element={<Navigate to="/explore/1" replace />}
                     />
-
                     <Route
                         path="/explore/:page"
                         element={<HomePage showCoinInfo={showCoinInfo} />}
