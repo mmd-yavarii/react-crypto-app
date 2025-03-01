@@ -108,4 +108,7 @@
     .container {
         max-width: 400px;
     }
+    .nav select {
+        cursor: pointer;
+    }
 }

@@ -1,6 +1,6 @@
 import CoinCard from '../CoinCard/CoinCard';
 
-function CoinList({ coins, showCoinInfo, currency, savedCoins }) {
+function CoinList({ coins, showCoinInfo, currency }) {
     return (
         <>
             <h4 className="title">All Coins</h4>

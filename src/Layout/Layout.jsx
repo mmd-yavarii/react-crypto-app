@@ -14,9 +14,12 @@ function Layout({ children }) {
 
     // log out
     function logOutHandler() {
-        localStorage.removeItem('isLogin');
-        changeLogin(false);
-        navigate('/');
+        const confirmation = confirm('Are you sure you want to log out?');
+        if (confirmation) {
+            localStorage.removeItem('isLogin');
+            changeLogin(false);
+            navigate('/');
+        }
     }
 
     return (
@@ -43,6 +46,7 @@ function Layout({ children }) {
                 ) : (
                     <>
                         <BiArrowBack
+                            className={styles.backArrow}
                             fontSize="1.5rem"
                             onClick={() => navigate(-1)}
                         />

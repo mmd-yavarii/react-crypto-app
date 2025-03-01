@@ -36,6 +36,8 @@
 
 @media (min-width: 500px) {
     .dashboard,
+    .logOut,
+    .backArrow,
     .logInBtn {
         cursor: pointer;
     }
