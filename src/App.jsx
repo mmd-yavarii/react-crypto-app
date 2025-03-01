@@ -1,10 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { setMetaThemColor } from './helpers/helper.js';
+
 import HomePage from './pages/HomePage.jsx';
 import Layout from './Layout/Layout';
-import FavoritesProvider from './contexts/FavoritesProvider.jsx';
-import CurrencyProvider from './contexts/CurrencyProvider.jsx';
-import IsLoginProvider from './contexts/IsLoginProvider.jsx';
 import PageNotFound from './pages/404/404.jsx';
 import LoginPage from './pages/Login/LoginPage.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
@@ -31,14 +29,15 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<HomePage showCoinInfo={showCoinInfo} />}
+                        element={<Navigate to="/explore/1" replace />}
                     />
-                    <Route path="/login" element={<LoginPage />} />
 
                     <Route
                         path="/explore/:page"
                         element={<HomePage showCoinInfo={showCoinInfo} />}
                     />
+
+                    <Route path="/login" element={<LoginPage />} />
 
                     <Route
                         path="/dashboard"
