@@ -34,6 +34,12 @@ function App() {
                         element={<HomePage showCoinInfo={showCoinInfo} />}
                     />
                     <Route path="/login" element={<LoginPage />} />
+
+                    <Route
+                        path="/explore/:page"
+                        element={<HomePage showCoinInfo={showCoinInfo} />}
+                    />
+
                     <Route
                         path="/dashboard"
                         element={<Dashboard showCoinInfo={showCoinInfo} />}

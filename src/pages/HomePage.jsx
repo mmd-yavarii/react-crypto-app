@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { useParams } from 'react-router-dom';
 import { useEffect, useReducer, useState, useContext } from 'react';
 import { CurrencyContext } from '../contexts/CurrencyProvider.jsx';
 
@@ -9,9 +10,6 @@ import Pagination from '../components/Pagination/Pagination.jsx';
 import PageLoading from '../components/Loading/PageLoading.jsx';
 import CoinList from '../components/CoinList/CoinList.jsx';
 import Searchbar from '../components/Searchbar/Searchbar.jsx';
-import Modal from '../components/Modal/Modal.jsx';
-import CoinPageInfo from '../components/CoinPageInfo/CoinPageInfo.jsx';
-import Loading from '../components/Loading/Loading.jsx';
 import SuggestedCoins from '../components/SuggestedCoins/SuggestedCoins.jsx';
 import ErrorPage from '../components/ErrorPage/ErrorPage.jsx';
 
@@ -41,7 +39,9 @@ function HomePage({ showCoinInfo }) {
     const [coins, dispachCoins] = useReducer(coinsReducer, initialCoinsState);
     const { currency, setCurrency } = useContext(CurrencyContext);
 
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
+    const params = useParams();
+    const page = params.page || 1;
 
     // get coins to show in main page
     useEffect(() => {
@@ -81,7 +81,7 @@ function HomePage({ showCoinInfo }) {
 
                 <CoinList coins={coins.coins} showCoinInfo={showCoinInfo} />
 
-                <Pagination setPage={setPage} />
+                <Pagination />
             </>
         );
     } else {
