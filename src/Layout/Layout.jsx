@@ -25,7 +25,7 @@ function Layout({ children }) {
     return (
         <>
             <header className={styles.header}>
-                {location.pathname === '/' ? (
+                {location.pathname.includes('/explore') ? (
                     <>
                         <h3>Explore</h3>
 
