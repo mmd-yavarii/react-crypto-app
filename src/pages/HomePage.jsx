@@ -43,6 +43,11 @@ function HomePage({ showCoinInfo }) {
     const params = useParams();
     const page = params.page || 1;
 
+    // scroll to top 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+    
     // get coins to show in main page
     useEffect(() => {
         const URL = getCoinList(currency.type, page);
